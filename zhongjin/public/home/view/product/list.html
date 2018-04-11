@@ -1,0 +1,45 @@
+<!-- 产品列表 -->
+<div class="content-wrapper product-list">
+	<div class="content">
+		<!-- 顶部功能区 -->
+		<div class="content-top">
+			<!-- 添加产品 -->
+			<a class="btn" href="#/product/add">
+				<button class="btn-theme-o">添加产品</button>
+			</a>
+			<div class="form-inline">
+				<form id="j_form_search" onsubmit="return false">
+					<!-- 产品状态 -->
+					<label>产品状态：</label>
+					<select name="status" onchange="BSTSearch('#j_product_table', 250)" bind-data="{search.status}">
+						<option value="0">请选择状态</option>
+						<option value="1">募集中</option>
+						<option value="2">存续</option>
+						<option value="3">退出</option>
+					</select>
+					<!-- 搜索 -->
+					<input type="search" name="search" oninput="BSTSearch('#j_product_table', 400)" bind-data="{search.search}" placeholder="请输入关键字搜索">
+					<button class="btn-theme" type="submit" onclick="BSTSearch('#j_product_table', 250)">搜索</button>
+				</form>
+			</div>
+		</div>
+		<!-- 主体内容区 -->
+		<div class="content-body">
+			<table class="title-left" id="j_product_table">
+				<thead>
+					<tr>
+						<th data-field="title">产品名称</th>
+						<th data-field="status" data-formatter="BSTFormatHandleRow.product.status">产品状态</th>
+						<th data-field="id" data-formatter="BSTFormatHandleRow.product.handle">操作</th>
+					</tr>
+				</thead>
+				<tbody>
+				<!-- bs table data -->
+				</tbody>
+			</table>
+		</div>
+		<!-- table /end -->
+	</div>
+	<!-- content /end -->
+</div>
+<!-- container /end -->

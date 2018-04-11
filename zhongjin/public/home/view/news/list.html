@@ -1,0 +1,45 @@
+<!-- 新闻列表 -->
+<div class="content-wrapper news-list">
+	<div class="content">
+		<!-- 顶部功能区 -->
+		<div class="content-top">
+			<!-- 发布新闻 -->
+			<a class="btn" href="#/news/add">
+				<button class="btn-theme-o">发布新闻</button>
+			</a>
+			<div class="form-inline">
+				<form onsubmit="return false" id="j_form_search">
+					<!-- 新闻类型 -->
+					<label>新闻类型：</label>
+					<select name="news_type" bind-data="{search.news_type}" onchange="BSTSearch('#j_news_table', 250)">
+						<option value="">请选择类型</option>
+						<option value="1">项目动态</option>
+						<option value="2">精选文摘</option>
+						<option value="3">公司动态</option>
+					</select>
+					<!-- 搜索 -->
+					<input type="search" name="search" bind-data="{search.search}" oninput="BSTSearch('#j_news_table', 400)" placeholder="请输入关键字搜索">
+					<button class="btn-theme" onclick="BSTSearch('#j_news_table', 250)">搜索</button>
+				</form>
+			</div>
+		</div>
+		<!-- 主体内容区 -->
+		<div class="content-body">
+			<table class="title-left" id="j_news_table">
+				<thead>
+					<tr>
+						<th data-field="title">标题</th>
+						<th data-field="news_type_id" data-formatter="BSTFormatHandleRow.news.type">新闻类型</th>
+						<th data-field="author">发送人</th>
+						<th data-field="time">发送时间</th>
+						<th data-field="id" data-formatter="BSTFormatHandleRow.news.handle">操作</th>
+					</tr>
+				</thead>
+				<tbody>
+					<!-- bs table data -->
+				</tbody>
+			</table>
+		</div>
+	</div>
+	<!-- content end -->
+</div>

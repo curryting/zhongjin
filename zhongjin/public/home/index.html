@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=1280">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge,chrome=1">
+    <meta name="renderer" content="webkit">
+    <script type="text/javascript">
+        var xmlhttp = new XMLHttpRequest();
+        xmlhttp.onreadystatechange = function () {
+            if (xmlhttp.readyState == 4) { // 4 = "loaded"
+                if (xmlhttp.status == 200) { // 200 = OK
+                    var res = JSON.parse(xmlhttp.response || xmlhttp.responseText);
+                    if (res.code === 402) {
+                        window.location = '/login';
+                    } else if (res.code === 200) {
+                        window.sessionStorage.setItem('username', res.username);
+                        var history = window.sessionStorage.getItem('_history_hash');
+                        if (history) {
+                            window.location.hash = history;
+                            window.sessionStorage.removeItem('_history_hash');
+                        }
+                    }
+                } else {
+                    console.error('Problem retrieving XML data');
+                }
+            }
+        }
+        xmlhttp.open('GET', '/home/user/isLogin', false);
+        xmlhttp.send(null);
+    </script>
+    <link rel="shortcut icon" href="/home/favicon.ico">
+    <link rel="stylesheet" href="/home/script/lib/jedate/skin/jedate.css">
+    <link rel="stylesheet" href="/home/css/app.css">
+    <title>首页 -- 鼎心资本</title>
+    <!--[if lt IE 9]>
+      <script>
+        alert('您使用的浏览器版本过低，请升级浏览器');
+        window.location = 'http://browsehappy.osfipin.com'
+      </script>
+    <![endif]-->
+</head>
+
+<body>
+    <!-- 网页顶部 -->
+    <header>
+        <nav>
+            <a href="#" class="logo">
+                <img src="/home/images/logo.png" alt="">
+            </a>
+            <div class="user">
+                <span class="user-name">
+                    <span id="j_login_username"></span>
+                    <i class="icon-triangle"></i>
+                </span>
+                <ul class="menu">
+                    <li class="reset-password">
+                        <a href="javascript:" id="j_reset_key">修改密码</a>
+                    </li>
+                    <li class="sign-out">
+                        <a href="javascript:" id="j_logout">退出</a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+    <!-- 侧边菜单栏 -->
+    <aside>
+        <ul class="menu-list">
+            <!-- 首页 -->
+            <li class="home treeview j-no-sub" id="p_m_0">
+                <a href="#/index" class="treeview-title">首页</a>
+            </li>
+            <!-- 公司简介 -->
+            <li class="company treeview j-no-sub" id="p_m_1">
+                <a href="#/profile" class="treeview-title">公司简介</a>
+            </li>
+            <!-- 客户管理 -->
+            <li class="treeview" id="p_m_2">
+                <a href="javascript:" class="treeview-title">
+                    <span>客户管理</span>
+                    <span class="angle-left"></span>
+                </a>
+                <ul class="treeview-menu">
+                    <li id="p_m_2_1">
+                        <a href="#/client/list">客户列表</a>
+                    </li>
+                </ul>
+            </li>
+            <!-- 产品管理 -->
+            <li class="treeview" id="p_m_3">
+                <a href="javascript:" class="treeview-title">
+                    <span>产品管理</span>
+                    <span class="angle-left"></span>
+                </a>
+                <ul class="treeview-menu">
+                    <li id="p_m_3_1">
+                        <a href="#/product/add">新增产品</a>
+                    </li>
+                    <li id="p_m_3_2">
+                        <a href="#/product/list">产品列表</a>
+                    </li>
+                </ul>
+            </li>
+            <!-- 新闻管理 -->
+            <li class="treeview" id="p_m_4">
+                <a href="javascript:" class="treeview-title">
+                    <span>新闻管理</span>
+                    <span class="angle-left"></span>
+                </a>
+                <ul class="treeview-menu">
+                    <li id="p_m_4_1">
+                        <a href="#/news/add">新建新闻</a>
+                    </li>
+                    <li id="p_m_4_2">
+                        <a href="#/news/list">新闻列表</a>
+                    </li>
+                </ul>
+            </li>
+            <!-- 通知管理 -->
+            <li class="treeview" id="p_m_5">
+                <a href="javascript:" class="treeview-title">
+                    <span>通知管理</span>
+                    <span class="angle-left"></span>
+                </a>
+                <ul class="treeview-menu">
+                    <li id="p_m_5_1">
+                        <a href="#/notice/add">新建通知</a>
+                    </li>
+                    <li id="p_m_5_2">
+                        <a href="#/notice/list">通知列表</a>
+                    </li>
+                </ul>
+            </li>
+            <!-- 投票管理 -->
+            <li class="treeview" id="p_m_6">
+                <a href="javascript:" class="treeview-title">
+                    <span>投票管理</span>
+                    <span class="angle-left"></span>
+                </a>
+                <ul class="treeview-menu">
+                    <li id="p_m_6_1">
+                        <a href="#/vote/add/0">新建投票</a>
+                    </li>
+                    <li id="p_m_6_2">
+                        <a href="#/vote/list">投票列表</a>
+                    </li>
+                </ul>
+            </li>
+            <!-- 调研管理 -->
+            <li class="treeview" id="p_m_7">
+                <a href="javascript:" class="treeview-title">
+                    <span>调研管理</span>
+                    <span class="angle-left"></span>
+                </a>
+                <ul class="treeview-menu">
+                    <li id="p_m_7_1">
+                        <a href="#/survey/add/0">新建调研</a>
+                    </li>
+                    <li id="p_m_7_2">
+                        <a href="#/survey/list">调研列表</a>
+                    </li>
+                </ul>
+            </li>
+            <!-- 投资管理 -->
+            <li class="treeview" id="p_m_8">
+                <a href="javascript:" class="treeview-title">
+                    <span>投资管理</span>
+                    <span class="angle-left"></span>
+                </a>
+                <ul class="treeview-menu">
+                    <li id="p_m_8_1">
+                        <a href="#/invest/add">添加投资</a>
+                    </li>
+                    <li id="p_m_8_2">
+                        <a href="#/invest/list">投资列表</a>
+                    </li>
+                </ul>
+            </li>
+            <!-- 应用管理 -->
+            <!-- <li class="treeview" id="p_m_9">
+                <a href="javascript:" class="treeview-title">
+                    <span>应用管理</span>
+                    <span class="angle-left"></span>
+                </a>
+                <ul class="treeview-menu">
+                    <li id="p_m_9_1"><a href="#/setting/menu">应用菜单</a></li>
+                    <li id="p_m_9_2"><a href="#/setting/option">应用设置</a></li>
+                </ul>
+            </li> -->
+        </ul>
+    </aside>
+    <!-- 模板容器 -->
+    <section class="container" id="j_load_container">
+        <!-- 模板页面载入区 -->
+    </section>
+    <!-- script -->
+    <script data-main="/home/app.js" src="/home/script/lib/requirejs/require.min.js"></script>
+    <!-- modal -->
+  
+</body>
+
+</html>

@@ -1,0 +1,94 @@
+<div class="content-wrapper product-edit">
+	<div class="content">
+		<!-- 顶部功能区 -->
+		<div class="content-top">
+			<a href="javascript:window.history.back()">
+				<button class="btn-theme-o">返回</button>
+			</a>
+		</div>
+		<!-- 主体内容区 -->
+		<div class="content-body">
+			<!-- 表单 -->
+			<form onsubmit="return false" id="j_edit_product_form">
+				<!-- 产品信息 -->
+				<div class="product-info">
+					<div class="info-left">
+						<div class="form-group">
+							<label class="required">产品名称：</label>
+							<input type="text" name="name" placeholder="请输入产品名称（20字内）" required>
+							<!-- 产品id -->
+							<input type="hidden" name="id">
+						</div>
+						<div class="form-group">
+							<label class="required">成立日期：</label>
+							<input type="text" name="establish" class="time-input" id="j_establish_time" placeholder="请选择成立日期" readonly="true" required>
+						</div>
+						<div class="form-group">
+							<label class="required">产品期限：</label>
+							<input type="text" name="deadline" placeholder="请输入产品期限" required>
+						</div>
+						<div class="form-group">
+							<label class="required">投资范围：</label>
+							<input type="text" name="scope" placeholder="请输入投资范围" required>
+						</div>
+					</div>
+					<div class="info-right">
+						<div class="form-group radio-inline">
+							<label class="required">产品状态：</label>
+							<input type="radio" id="raise" name="status" value="1" required checked="checked">
+							<label for="raise" class="check-tag">募集中</label>
+							<input type="radio" id="subsist" name="status" value="2" required>
+							<label for="subsist" class="check-tag">存续</label>
+							<input type="radio" id="end" name="status" value="3" required>
+							<label for="end" class="check-tag">退出</label>
+						</div>
+						<div class="form-group">
+							<label class="required">管理人：</label>
+							<input type="text" name="manager" placeholder="请输入管理人（20字内）" required>
+						</div>
+						<div class="form-group">
+							<label class="required">币种：</label>
+							<input type="text" name="currency" placeholder="请输入币种（20字内）" required>
+						</div>
+						<div class="form-group">
+							<label>托管机构：</label>
+							<input type="text" name="trusteeship" placeholder="请输入托管机构（20字内）">
+						</div>
+					</div>
+				</div>
+				<!-- 产品费用 -->
+				<div class="product-charge">
+					<div class="charge-left">
+						<div class="form-group">
+							<label class="required">认购费：</label>
+							<input type="text" name="subscription_fee" placeholder="请输入认购费" required>
+						</div>
+						<div class="form-group">
+							<label class="required">管理费：</label>
+							<input type="text" name="management_fee" placeholder="请输入管理费" required>
+						</div>
+						<div class="form-group">
+							<label>外包服务费：</label>
+							<input type="text" name="outsourcing_fee" placeholder="请输入外包服务费">
+						</div>
+					</div>
+					<div class="charge-right">
+						<div class="form-group">
+							<label>托管费：</label>
+							<input type="text" name="trust_fee" placeholder="请输入托管费">
+						</div>
+						<div class="form-group">
+							<label>其他费用：</label>
+							<input type="text" name="redemption_fee" placeholder="请输入其他费用">
+						</div>
+					</div>
+				</div>
+			</form>
+		</div>
+		<!-- 底部提交按钮 -->
+		<div class="content-bottom">
+			<button class="btn-theme" onclick="javascript:$('#j_edit_product_form').submit()">确认</button>
+		</div>
+	</div>
+	<!-- content /end -->
+</div>

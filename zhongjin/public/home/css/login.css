@@ -1,0 +1,592 @@
+html {
+  height: 100%;
+  overflow: hidden;
+}
+body {
+  height: 100%;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 14px;
+  color: #212121;
+  overflow: hidden;
+  position: relative;
+}
+img {
+  border: none;
+  outline: none;
+}
+a {
+  text-decoration: none;
+  color: #212121;
+}
+button {
+  -ms-transition: background-color 0.3s;
+  -moz-transition: background-color 0.3s;
+  -webkit-transition: background-color 0.3s;
+  transition: background-color 0.3s;
+}
+button {
+  border: none;
+  border-radius: 3px;
+  padding: 6px 12px;
+  font-size: 14px;
+  cursor: pointer;
+}
+button.btn-theme:hover {
+  background-color: #97202a;
+}
+button.btn-warning:hover {
+  background-color: #d58412;
+}
+button.btn-info:hover {
+  background-color: #269abc;
+}
+button.btn-cancel:hover {
+  background-color: #bababa;
+}
+.btn-theme {
+  background-color: #b42632;
+  color: #fff;
+}
+.btn-theme-o {
+  border: 1px solid #b42632;
+  background-color: #fff;
+  color: #b42632;
+}
+.btn-info {
+  background-color: #31b0d5;
+  color: #fff;
+}
+.btn-warning {
+  background-color: #ec971f;
+  color: #fff;
+}
+.btn-cancel {
+  background-color: #ccc;
+  color: #777;
+}
+.btn-default-o {
+  border: 1px solid #ccc;
+  background-color: transparent;
+  color: #777;
+}
+/* time input */
+input.time-input {
+  border: 1px solid #aaa;
+  background: url(/home/images/calendar.png) right 5px center no-repeat;
+}
+input.search,
+input[type="search"] {
+  border: 1px solid #aaa;
+  border-radius: 3px;
+  background: url("/home/images/search.png") left 3px center no-repeat;
+  text-indent: 1.5em;
+}
+label.spacing {
+  white-space: pre;
+}
+.form-inline {
+  display: inline-block;
+  margin-left: 25px;
+}
+.form-inline form label {
+  font-size: 14px;
+  user-select: none;
+}
+.form-inline form input[type="text"],
+.form-inline form input[type="search"],
+.form-inline form select {
+  min-width: 100px;
+  height: 31px;
+  padding-left: 5px;
+  border: 1px solid #bbb;
+  border-radius: 3px;
+  vertical-align: middle;
+}
+.form-inline form button {
+  margin-left: 5px;
+  vertical-align: middle;
+}
+form .form-group {
+  position: relative;
+  margin: 20px 0;
+  white-space: nowrap;
+}
+form .form-group label {
+  display: inline-block;
+  min-width: 90px;
+  text-align: right;
+  font-size: 14px;
+  vertical-align: middle;
+  user-select: none;
+}
+form .form-group label.check-tag {
+  text-align: left;
+  padding-right: 30px;
+  min-width: 118px;
+}
+form .form-group label.required::before {
+  content: '*';
+  font-size: 20px;
+  color: #b42632;
+  vertical-align: top;
+}
+form .form-group input[type="radio"],
+form .form-group input[type="checkbox"] {
+  display: none;
+}
+form .form-group input[type="radio"] + label::before,
+form .form-group input[type="checkbox"] + label::before {
+  content: " ";
+  display: inline-block;
+  width: 16px;
+  height: 16px;
+  padding: 2px;
+  margin: -4px 8px 0 8px;
+  background-color: #f0f0f0;
+  border: 1px solid #aaa;
+  -ms-border-radius: 50%;
+  -moz-border-radius: 50%;
+  -webkit-border-radius: 50%;
+  border-radius: 50%;
+  vertical-align: middle;
+}
+form .form-group input[type="radio"]:checked + label::before,
+form .form-group input[type="checkbox"]:checked + label::before {
+  background-color: #b42632;
+  background-clip: content-box;
+}
+form .form-group input[type="checkbox"] + label::before {
+  padding: 0;
+  border-radius: 0;
+}
+form .form-group input[type="checkbox"]:checked + label::before {
+  content: "\2713";
+  background-color: transparent;
+  background-clip: content-box;
+  line-height: 10px;
+  text-indent: -0.12em;
+  font-style: italic;
+  font-weight: bold;
+  font-size: 20px;
+  color: #b42632;
+}
+form .form-group input[type="text"],
+form .form-group input[type="password"] {
+  width: 310px;
+  height: 35px;
+  padding: 0 5px;
+  vertical-align: middle;
+  border: 1px solid #aaa;
+}
+form .form-group input[type="file"] {
+  vertical-align: middle;
+}
+form .form-group input[type="number"] {
+  vertical-align: middle;
+  border: 1px solid #aaa;
+}
+form .form-group select {
+  height: 31px;
+  padding-left: 5px;
+  padding-right: 25px;
+  margin-left: 15px;
+  border: 1px solid #bbb;
+  vertical-align: middle;
+}
+form .form-group textarea {
+  padding: 5px;
+  overflow: auto;
+  resize: none;
+}
+.upload-file {
+  position: relative;
+  display: inline-block;
+  vertical-align: middle;
+  width: 100px;
+  height: 35px;
+  border-radius: 3px;
+  overflow: hidden;
+  background-color: #b42632;
+  line-height: 35px;
+  text-align: center;
+  color: #fff;
+  -webkit-transition: background-color 0.4s;
+  -moz-transition: background-color 0.4s;
+  -ms-transition: background-color 0.4s;
+  transition: background-color 0.4s;
+  cursor: default;
+}
+.upload-file:hover {
+  background-color: #9f222c;
+}
+.upload-file input {
+  position: absolute;
+  top: 0;
+  left: -10px;
+  width: 110px;
+  height: 35px;
+  opacity: 0;
+}
+@keyframes shake {
+  0%,
+  100% {
+    transform: translateX(0);
+  }
+  10%,
+  30%,
+  50%,
+  70%,
+  90% {
+    transform: translateX(-5px);
+  }
+  20%,
+  40%,
+  60%,
+  80% {
+    transform: translateX(5px);
+  }
+}
+.fixed-table-body {
+  -ms-box-shadow: 1px 2px 10px 1px #ccc;
+  -moz-box-shadow: 1px 2px 10px 1px #ccc;
+  -webkit-box-shadow: 1px 2px 10px 1px #ccc;
+  box-shadow: 1px 2px 10px 1px #ccc;
+}
+table {
+  width: 100%;
+}
+table thead tr {
+  border-bottom: 3px solid #b42632;
+  color: #b42632;
+  font-size: 14px;
+  font-style: normal;
+}
+table thead tr th {
+  padding: 6px 0;
+  border: 1px solid #eee;
+  text-align: center;
+}
+table tbody tr {
+  border: 1px solid #eee;
+  font-size: 14px;
+}
+table tbody tr:hover {
+  background-color: #f0f0f0;
+}
+table tbody tr td {
+  padding: 7px 5px;
+  border: 1px solid #eee;
+  text-align: center;
+}
+table tbody tr td:last-child {
+  white-space: nowrap;
+}
+table tbody tr td a.handle {
+  padding: 5px;
+  text-decoration: underline;
+  color: #3e8ae2;
+}
+table tbody tr td a.handle.del {
+  text-decoration: underline;
+  color: #b42632;
+}
+table tbody tr td a.handle.disabled {
+  padding: 5px;
+  text-decoration: none;
+  color: #999;
+  cursor: text;
+}
+table tbody tr td a.handle.disabled.split {
+  padding: 0;
+  color: #ddd;
+}
+.clearfix::after {
+  content: " ";
+  display: table;
+  clear: both;
+}
+.clearfix:after {
+  content: " ";
+  display: table;
+  clear: both;
+}
+.show {
+  display: block;
+}
+.hide {
+  display: none;
+}
+.editor-wrapper {
+  white-space: normal;
+}
+/* 左右分栏 */
+.col-left {
+  display: inline-block;
+  width: 54%;
+  vertical-align: top;
+}
+.col-left p {
+  margin: 25px 0;
+  padding-left: 120px;
+  font-size: 14px;
+}
+.col-left p span {
+  display: inline-block;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  vertical-align: middle;
+}
+.col-left p span.spacing {
+  white-space: pre;
+}
+.col-right {
+  display: inline-block;
+  width: 45%;
+  vertical-align: top;
+}
+.col-right p {
+  margin: 25px 0;
+  font-size: 14px;
+}
+.col-right p span {
+  display: inline-block;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  vertical-align: middle;
+}
+.col-right p span.spacing {
+  white-space: pre;
+}
+/* 分页 */
+.pagination-detail {
+  margin-top: 50px;
+  text-align: center;
+}
+div.pagination {
+  margin-top: 20px;
+  text-align: center;
+  font-size: 0;
+}
+div.pagination ul.pagination {
+  display: inline-block;
+}
+div.pagination ul.pagination li {
+  float: left;
+  min-width: 30px;
+  height: 30px;
+  padding: 0 3px;
+  margin-right: 10px;
+  border: 1px solid #ccc;
+  background-color: #fff;
+  line-height: 30px;
+  font-size: 14px;
+  color: #444;
+}
+div.pagination ul.pagination li.active {
+  border: 1px solid #b42632;
+  background-color: #b42632;
+}
+div.pagination ul.pagination li.active a {
+  color: #fff;
+}
+div.pagination ul.pagination li.disabled {
+  background-color: #ccc;
+}
+div.pagination ul.pagination li.disabled.etc {
+  margin: 0 3px 0 -7px;
+  border: none;
+  line-height: 21px;
+}
+div.pagination ul.pagination li a {
+  display: block;
+  width: 100%;
+  height: 100%;
+  color: inherit;
+}
+div.pagination .count {
+  vertical-align: top;
+  line-height: 30px;
+  font-size: 14px;
+  color: #444;
+}
+.edui-default .edui-editor {
+  z-index: 11 !important;
+}
+[repeat-dom] {
+  display: none !important;
+}
+header {
+  position: absolute;
+  width: 100%;
+  height: 50px;
+  background-color: #fff;
+  z-index: 12;
+}
+nav {
+  height: 100%;
+  border-bottom: 1px solid #ccc;
+}
+nav .logo {
+  display: inline-block;
+  height: 100%;
+  padding: 5px 0;
+  margin-left: 50px;
+}
+nav .logo img {
+  height: 40px;
+  min-width: 110px;
+}
+nav .title {
+  display: inline-block;
+  margin-left: 35px;
+  height: 100%;
+  vertical-align: top;
+  line-height: 50px;
+  font-size: 16px;
+}
+section {
+  padding-top: 50px;
+}
+section .container {
+  position: relative;
+}
+section .container img.login-bg {
+  width: 100%;
+  min-width: 1366px;
+}
+section .container .login-wrapper {
+  position: absolute;
+  top: 18%;
+  left: 52%;
+  width: 450px;
+  padding: 15px 25px;
+  background-color: #fff;
+}
+section .container .login-wrapper.has-error {
+  border-color: #843534;
+  -ms-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 15px #b42632;
+  -moz-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 15px #b42632;
+  -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 15px #b42632;
+  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 15px #b42632;
+  animation: shake 1s;
+}
+section .container .login-wrapper.has-error .sign-in.has-error .title .tab-name {
+  left: -100%;
+}
+section .container .login-wrapper.has-error .sign-in.has-error .title .error-tip {
+  right: 0;
+}
+section .container .login-wrapper.has-error .forget-password.has-error .title .tab-name {
+  left: -100%;
+}
+section .container .login-wrapper.has-error .forget-password.has-error .title .error-tip {
+  right: 0;
+}
+section .container .login-wrapper .title {
+  position: relative;
+  padding-bottom: 5px;
+  margin-bottom: 20px;
+  border-bottom: 2px solid #b42632;
+  text-align: center;
+  font-size: 18px;
+}
+section .container .login-wrapper .title .tab-name {
+  position: relative;
+  left: 0;
+  transition: left 1s;
+}
+section .container .login-wrapper .title .error-tip {
+  transition: right 1s;
+  position: absolute;
+  top: 0;
+  right: -100%;
+  width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  font-size: 18px;
+  color: #b42632;
+}
+section .container .login-wrapper .form-group {
+  margin-bottom: 12px;
+  font-size: 0;
+}
+section .container .login-wrapper .form-group label {
+  display: inline-block;
+  min-width: 85px;
+  text-align: right;
+  font-size: 14px;
+}
+section .container .login-wrapper .form-group input {
+  width: 245px;
+  height: 35px;
+  padding: 0 5px;
+  margin-left: 5px;
+  border: 1px solid #aaa;
+  vertical-align: middle;
+}
+section .container .login-wrapper .form-group input.code-input {
+  width: 140px;
+}
+section .container .login-wrapper .form-group input.has-error {
+  border-color: #843534 !important;
+  animation: flash 1.5s forwards;
+}
+section .container .login-wrapper .btn {
+  text-align: center;
+}
+section .container .login-wrapper .btn button {
+  width: 120px;
+  height: 35px;
+  margin: 0 5px;
+}
+section .container .login-wrapper .img-code {
+  width: 100px;
+  height: 35px;
+  margin-left: 5px;
+  background-color: #f5f5f5;
+  vertical-align: top;
+  cursor: pointer;
+}
+section .container .login-wrapper .sign-in {
+  overflow: hidden;
+}
+section .container .login-wrapper .sign-in .forget-tip {
+  padding: 0 65px;
+  margin-bottom: 15px;
+  text-align: right;
+}
+section .container .login-wrapper .sign-in .forget-tip span {
+  text-decoration: underline;
+  color: #3079d3;
+  cursor: pointer;
+}
+section .container .login-wrapper .forget-password {
+  overflow: hidden;
+  display: none;
+}
+section .container .login-wrapper .forget-password .form-group .get-phone-code {
+  width: 100px;
+  height: 35px;
+  margin-left: 5px;
+  vertical-align: middle;
+}
+section .container .login-wrapper .forget-password .form-group .get-phone-code.disabled {
+  background-color: #ccc;
+  cursor: not-allowed;
+}
+section .container .login-wrapper .forget-password .btn {
+  margin-top: 25px;
+}
+@keyframes flash {
+  0%,
+  50% {
+    box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 1px #ce8483;
+  }
+  25%,
+  100% {
+    box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 10px #ce8483;
+  }
+}

@@ -1,0 +1,31 @@
+<!-- 答案列表 -->
+<div class="content-wrapper paper-list">
+	<div class="content" id="j_paper_list">
+		<!-- 顶部菜单栏 -->
+		<div class="content-top">
+			<h1 bind-data="{paper.title}"></h1>
+			<div class="btn-group clearfix">
+              	<button class="btn-theme-o" onclick="javascript:window.location.hash='/survey/list';">返回</button>
+				<!-- <a class="download" id="j_download_report">下载报告</a> -->
+			</div>
+		</div>
+		<!-- 主体内容区 -->
+		<div class="content-body">
+			<table id="j_paper_table">
+				<thead>
+					<tr>
+						<th data-field="time">提交答卷时间</th>
+						<th data-field="name">用户姓名</th>
+						<th data-field="mobile">手机号</th>
+						<th data-field="id" data-formatter="BSTFormatHandleRow.survey.paper.handle">操作</th>
+					</tr>
+				</thead>
+				<tbody>
+					<!-- bs table data -->
+				</tbody>
+			</table>
+		</div>
+		<!-- content body /end -->
+	</div>
+	<!-- content /end -->
+</div>

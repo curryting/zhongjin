@@ -1,0 +1,43 @@
+<!-- 首页 -->
+<div class="content-wrapper home-card-list">
+    <div class="content">
+        <ul>
+            <li>
+                <div class="card user">
+                    <p class="title">用户数</p>
+                    <p class="count" bind-data="{data.customerCount}">00</p>
+                </div>
+            </li>
+            <li>
+                <div class="card follow">
+                    <p class="title">已关注</p>
+                    <p class="count" bind-data="{data.followCount}">00</p>
+                </div>
+            </li>
+            <li>
+                <div class="card unfollow">
+                    <p class="title">未关注</p>
+                    <p class="count" bind-data="{data.unfollowCount}">00</p>
+                </div>
+            </li>
+            <li>
+                <div class="card seven">
+                    <p class="title">近七天信息发送量</p>
+                    <p class="count" bind-data="{data.msgCount}">00</p>
+                </div>
+            </li>
+            <li>
+                <div class="card yesterday-user">
+                    <p class="title">昨日活跃用户数</p>
+                    <p class="count" bind-data="{data.activeCount}">00</p>
+                </div>
+            </li>
+            <li>
+                <div class="card yesterday-login">
+                    <p class="title">昨日用户登录次数</p>
+                    <p class="count" bind-data="{data.loginCount}">00</p>
+                </div>
+            </li>
+        </ul>
+    </div>
+</div>

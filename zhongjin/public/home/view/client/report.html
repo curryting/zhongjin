@@ -1,0 +1,54 @@
+<!-- 投资报告 -->
+<div class="content-wrapper invest-report">
+    <div class="content">
+        <!-- 顶部 -->
+        <div class="content-top">
+            <!-- 返回 -->
+            <button class="btn-theme-o back" onclick="window.history.back();">返回</button>
+            <!-- 过滤搜索 -->
+            <div class="form-inline">
+                <form id="j_form_search" onsubmit="return false">
+                    <!-- 当前的产品id -->
+                    <input type="hidden" name="id" value="" bind-data="{search.id}">
+                    <!-- 报告类型 -->
+                    <label>报告类型：</label>
+                    <select name="report_type" onchange="BSTSearch('#j_report_table', 250)" bind-data="{search.report_type}">
+                        <option value="">全部</option>
+                        <option value="1">投后报告</option>
+                        <option value="2">合规文件</option>
+                        <option value="3">基金合同</option>
+                    </select>
+                    <!-- 搜索 -->
+                    <input type="search" name="search" oninput="BSTSearch('#j_report_table', 400)" bind-data="{search.search}" placeholder="请输入关键字搜索">
+                    <button class="btn-theme" type="submit" onclick="BSTSearch('#j_report_table', 250)">搜索</button>
+                </form>
+            </div>
+        </div>
+        <!-- 主体内容区 -->
+        <div class="content-body">
+            <table id="j_report_table">
+                <thead>
+                    <tr>
+                        <th data-field="time">发布时间</th>
+                        <th data-field="report_type" data-formatter="BSTFormatHandleRow.client.reportType">报告类型</th>
+                        <th data-field="id" data-formatter="BSTFormatHandleRow.productForClient.reportList">操作</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- bs table data -->
+                </tbody>
+            </table>
+        </div>
+        <!-- content body /end -->
+    </div>
+    <!-- content /end -->
+</div>
+<script>
+    var productId = window.location.hash.split('/').pop(), searchArgs = {};
+ 
+    searchArgs[window.location.hash] = { id: productId }
+    // 保存产品id到localStorage
+    window.sessionStorage.setItem('BSTsearchArgs', 0 + '|-|' + JSON.stringify(searchArgs))
+    // 设置表单产品的id
+    document.querySelector('#j_form_search').id.value = productId
+</script>

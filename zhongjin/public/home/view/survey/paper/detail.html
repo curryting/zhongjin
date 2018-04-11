@@ -1,0 +1,33 @@
+<div class="content-wrapper paper-detail">
+	<div class="content" id="j_paper_detail">
+		<!-- 投票标题 -->
+		<div class="content-top">
+			<h1 bind-data="{paper.title}"></h1>
+			<div class="btn-group clearfix">
+				<button class="btn-theme-o" id="j_go_back">返回</button>
+				<a class="download" id="j_download_report">下载答卷</a>
+			</div>
+			<p class="user-info">
+				<span class="name">用户名：<span bind-data="{paper.name}"></span></span>
+				<span class="phone">手机号：<span bind-data="{paper.mobile}"></span></span>
+			</p>
+		</div>
+		<div class="content-body">
+			<h2>投票答案</h2>
+			<div class="table-wrapper">
+				<table class="answer-list">
+					<tbody id="j_answer_table">
+					
+					</tbody>
+				</table>
+			</div>
+		</div>
+		<div class="content-bottom">
+			<div class="btn-group" id="j_btn_href">
+				<a href="javascript:"><button class="btn-theme-o">上一份</button></a>
+				<a href="javascript:"><button class="btn-theme">下一份</button></a>
+			</div>
+		</div>
+	</div>
+	<!-- content/end -->
+</div>

@@ -1,0 +1,48 @@
+<div class="content-wrapper invest-detail">
+	<div class="content">
+		<!-- 顶部功能按钮 -->
+		<div class="content-top">
+			<a class="btn" href="javascript:window.history.back();">
+				<button class="btn-theme-o">返回</button>
+			</a>
+		</div>
+		<!-- 主体内容 -->
+		<div class="content-body" id="j_invest_detail">
+			<!-- 客户基本信息 -->
+			<div class="client-info">
+				<div class="title">
+					<h3>客户基本信息</h3>
+				</div>
+				<div class="content">
+					<div class="content-left col-left">
+						<p><span>客户类型：</span><span bind-data="{obj.client_type}"></span></p>
+						<p><span>证件类型：</span><span bind-data="{obj.id_type}"></span></p>
+						<p><span>手机号码：</span><span bind-data="{obj.phone}"></span></p>
+					</div>
+					<div class="content-right col-right">
+						<p><span class="spacing">名　　称：</span><span bind-data="{obj.client_name}"></span></p>
+						<p><span>证件号码：</span><span bind-data="{obj.id_number}"></span></p>
+					</div>
+				</div>
+			</div>
+			<div class="invest-info">
+				<div class="title">
+					<h3>投资详情</h3>
+				</div>
+				<div class="content">
+					<div class="content-left col-left">
+						<p><span>投资产品：</span><span bind-data="{obj.product_name}"></span></p>
+						<p><span>投资金额：</span><span bind-data="{obj.money}"></span></p>
+						<p><span>开户银行：</span><span bind-data="{obj.bank_name}"></span></p>
+					</div>
+					<div class="content-right col-right">
+						<p><span>产品状态：</span><span bind-data="{obj.status}"></span></p>
+						<p><span>投资日期：</span><span bind-data="{obj.invest_date}"></span></p>
+						<p><span>银行账号：</span><span bind-data="{obj.bank_account}"></span></p>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- content end -->
+</div>

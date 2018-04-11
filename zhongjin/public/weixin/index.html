@@ -1,0 +1,35 @@
+<!DOCTYPE html><html><head><meta charset=utf-8><meta content=yes name=apple-mobile-web-app-capable><meta content=yes name=apple-touch-fullscreen><meta content="telephone=no,email=no" name=format-detection><meta name=viewport content="width=device-width,initial-scale=1,user-scalable=no"><title>鼎心资本</title><script>!function (window) {
+
+      /* 设计图文档宽度 */
+      var docWidth = 750;
+
+      var doc = window.document,
+        docEl = doc.documentElement,
+        resizeEvt = 'orientationchange' in window ? 'orientationchange' : 'resize';
+
+      var recalc = (function refreshRem() {
+        var clientWidth = docEl.getBoundingClientRect().width;
+
+        docEl.style.fontSize = 20 * (clientWidth / docWidth) * 5 + 'px';
+        /* 8.55：小于320px不再缩小，11.2：大于420px不再放大 */
+        // docEl.style.fontSize = Math.max(Math.min(20 * (clientWidth / docWidth), 11.2), 8.55) * 5 + 'px';
+
+        return refreshRem;
+      })();
+
+      /* 添加倍屏标识，安卓为1 */
+      docEl.setAttribute('data-dpr', window.navigator.appVersion.match(/iphone/gi) ? window.devicePixelRatio : 1);
+
+      if (/iP(hone|od|ad)/.test(window.navigator.userAgent)) {
+        /* 添加IOS标识 */
+        doc.documentElement.classList.add('ios');
+        /* IOS8以上给html添加hairline样式，以便特殊处理 */
+        if (parseInt(window.navigator.appVersion.match(/OS (\d+)_(\d+)_?(\d+)?/)[1], 10) >= 8)
+          doc.documentElement.classList.add('hairline');
+      }
+
+      if (!doc.addEventListener) return;
+      window.addEventListener(resizeEvt, recalc, false);
+      doc.addEventListener('DOMContentLoaded', recalc, false);
+
+    }(window);</script><link href=/weixin/static/css/app.8a531888c4205ea136e34696e86ed867.css rel=stylesheet></head><body><div id=app></div><script type=text/javascript src=/weixin/static/js/manifest.63aef359cd6983839a7b.js></script><script type=text/javascript src=/weixin/static/js/vendor.e375a0068194551f3f3d.js></script><script type=text/javascript src=/weixin/static/js/app.257139a52e98a1c30a5c.js></script></body></html>

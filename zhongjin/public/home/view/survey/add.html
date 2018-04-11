@@ -1,0 +1,118 @@
+
+<div class="content-wrapper add-survey">
+	<!-- content -->
+	<div class="content survey-content">
+		<!-- content top -->
+		<div class="content-top">
+			<div class="btn-group">
+				<button class="btn-theme" disabled>1.编辑调研内容</button>
+				<button class="btn-theme-o" disabled>2.问题设置</button>
+			</div>
+		</div>
+		<!-- content body -->
+		<div class="content-body">
+			<!-- 调研表单 -->
+			<form id="j_survey_form" onsubmit="return false">
+				<!-- 发送对象 -->
+				<div class="form-group send-obj-group">
+					<label class="required">发送对象：</label>
+					<input type="radio" name="send_type" id="all" value="0" checked="checked">
+					<label class="check-tag" for="all">全员</label>
+					<!-- 指定对象 -->
+					<input type="radio" name="send_type" id="some_body" value="1">
+					<label class="check-tag" for="some_body">指定对象</label>
+					<input type="text" class="useless" id="j_selected_member" readonly>
+					<button type="button" class="btn-theme" id="j_show_selectOBJ">选择对象</button>
+				</div>
+				<!-- 标题 -->
+				<div class="form-group">
+					<label class="required">调研标题：</label>
+					<input type="text" name="title" maxlength="32" oninput="limitTitle(this)"
+					 placeholder="请输入调研标题，最多可输入32个字" required>
+					<span class="word-count" id="j_title_count">0/32</span>
+				</div>
+				<!-- 封面 -->
+				<div class="form-group">
+					<label class="required">选择图片：</label>
+					<a class="upload-file" id="j_browse_btn">选择图片</a>
+					<span class="upload-tip" id="j_file_name_place" title="(推荐尺寸：900*500,图片大小不超过64K)">(推荐尺寸：900*500,图片大小不超过64K)</span>
+					<div id="j_upload_container"><img  id="j_preview_img" class="hide preview-pic" src="" alt="图片预览"></div>
+					<!-- 上传的图片id -->
+					<input type="hidden" name="cover_id" id="j_cover_id" required>
+					
+				</div>
+				<!-- 摘要 -->
+				<div class="form-group">
+					<label>摘要：</label>
+					<textarea name="abstract" maxlength="128" type="text/plain" cols="30" rows="3" oninput="limitAbstract(this)"
+					 placeholder="请输入调研内容摘要，最多可输入128个字"></textarea>
+					  <span class="word-count" id="j_abstract_count">0/128</span>
+				</div>
+				<!-- 描述 -->
+				<div class="form-group">
+					<label class="required">调研描述：</label>
+					<div class="editor-wrapper">
+						<textarea id="j_u_editor" type="text/plain" name="description" rows="10" required="required"></textarea>
+					</div>
+				</div>
+				<!-- 结束语 -->
+				<div class="form-group">
+					<label>结束语：</label>
+					<textarea name="epilogue" type="text/plain" cols="30" rows="3" placeholder="结束语默认为 “您的答案已提交，感谢您的参与！”"></textarea>
+				</div>
+				<!-- 时间限制 -->
+				<div class="form-group ">
+					<label>开始时间：</label>
+					<input type="radio" name="start_time" id="no_begin_time" checked="checked" value="0" required>
+					<label class="check-tag" for="no_begin_time">不指定开始时间</label>
+					<input type="radio" name="start_time" id="assign_begin_time" value="0">
+					<label class="check-tag" for="assign_begin_time">指定开始时间</label>
+					<input class="time-input useless" type="text" id="j_begin_time" readonly>
+				</div>
+				<div class="form-group ">
+					<label>结束时间：</label>
+					<input type="radio" name="end_time" id="no_end_time" checked="checked" value="0" required>
+					<label class="check-tag" for="no_end_time">不指定结束时间</label>
+					<input type="radio" name="end_time" id="assign_end_time" value="0">
+					<label class="check-tag" for="assign_end_time">指定结束时间</label>
+					<input class="time-input useless" type="text" id="j_end_time" readonly>
+				</div>
+			</form>
+			<!-- 右侧预览 -->
+			<div class="preview">
+				<div class="preview-content" id="j_preview_content">
+					<div class="preview-cover">
+						<p class="title j-preview-title" bind-data="{preview.title}">请输入标题...</p>
+						<p class="timestamp j-preview-time"></p>
+						<div class="img"><img class="j-thumb-img" bind-data="{preview.cover}"></div>
+						<p class="abstract" id="j_preview_abs" bind-data="{preview.abstract}">请输入摘要...</p>
+					</div>
+					<div class="preview-detail">
+						<p class="title j-preview-title" bind-data="{preview.title}">请输入标题...</p>
+						<p class="stamp"><span class="timestamp j-preview-time"></span><span class="author">管理员</span></p>
+						<div class="description" id="j_preview_des">请输入描述...</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- content bottom -->
+		<div class="content-bottom">
+			<button class="btn-theme hide" id="j_save_btn">保存</button>
+			<button data-href="#/survey/option/0" id="j_next_btn" class="btn-theme" onclick="$('#j_survey_form').submit();">下一步,问题设置</button>
+		</div>
+	</div>
+	<!-- content/ end -->
+</div>
+<script>
+	// 限制摘要字数
+	function limitAbstract(_this) {
+		_this.value = _this.value.substr(0, 128);
+		$('#j_abstract_count').html(_this.value.length + '/128');
+		$('#j_preview_abs').html(_this.value);
+	}
+	// 限制标题字数
+	function limitTitle(_this) {
+		$('#j_title_count').html(_this.value.length + '/32');
+		$('.j-preview-title').html(_this.value || '请输入标题...');
+	}
+</script>

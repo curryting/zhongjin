@@ -1,0 +1,98 @@
+<!-- 新建新闻 -->
+<div class="content-wrapper add-vote">
+	<div class="content vote-content">
+		<!-- 引导序号 -->
+		<div class="content-top">
+			<ul class="steps clearfix">
+				<li class="steps-step active">
+					<span class="num">1</span>
+					<span class="des">编辑投票内容</span>
+				</li>
+				<li class="steps-line"></li>
+				<li class="steps-step">
+					<span class="num">2</span>
+					<span class="des">添加投票选项</span>
+				</li>
+				<li class="steps-line"></li>
+				<li class="steps-step">
+					<span class="num">3</span>
+					<span class="des">功能设置</span>
+				</li>
+			</ul>
+		</div>
+		<!-- 表单 -->
+		<div class="content-body">
+			<!-- 投票表单 -->
+			<form id="j_vote_form" onsubmit="return false" enctype="multipart/form-data">
+				<!-- 发送对象 -->
+				<div class="form-group">
+					<label class="required">发送对象：</label>
+					<input type="radio" name="send_type" id="all" value="0" checked="checked">
+					<label class="check-tag" for="all">全员</label>
+					<!-- 指定对象 -->
+					<input type="radio" name="send_type" id="some_body" value="1">
+					<label class="check-tag" for="some_body">指定对象</label>
+					<input type="text" class="useless" readonly="readonly" id="j_selected_member">
+					<button type="button" class="btn-theme" id="j_show_selectOBJ">选择对象</button>
+				</div>
+				<!-- 投票标题 -->
+				<div class="form-group">
+					<label class="required">投票标题：</label>
+					<input name="title" type="text" maxlength="32" oninput="titleInput(this)" placeholder="最多可输入32个字" required>
+					<span class="word-count" id="j_title_count">0/32</span>
+				</div>
+				<!-- 封面 -->
+				<div class="form-group">
+					<label class="required">投票封面：</label>
+					<a class="upload-file" id="j_browse_btn">选择图片</a>
+					<span class="upload-tip" id="j_file_name_place" title="(推荐尺寸：900*500,图片大小不超过64K)">(推荐尺寸：900*500,图片大小不超过64K)</span>
+					<div id="j_upload_container">
+						<img id="j_preview_img" class="hide preview-pic" src="" alt="图片预览">
+					</div>
+					<!-- 上传的图图片的id -->
+					<input id="j_cover_input" type="hidden" name="cover_id" required>
+				</div>
+				<!-- 摘要 -->
+				<div class="form-group">
+					<label>摘要：</label>
+					<textarea id="j_abstract_area" type="text/plain" name="abstract" maxlength="128" rows="4" oninput="abstractInput(this)"
+					 placeholder="最多可输入128字"></textarea>
+					<span class="word-count" id="j_abstract_count">0/128</span>
+				</div>
+				<!-- 投票描述 -->
+				<div class="form-group">
+					<label class="required">投票描述：</label>
+					<div class="editor-wrapper ">
+						<textarea id="j_u_editor" type="text/plain" name="description" rows="8" placeholder="请输入投票描述" required="required"></textarea>
+					</div>
+				</div>
+				<!-- 结束语 -->
+				<div class="form-group">
+					<label>结束语 ：</label>
+					<textarea id="j_epilogue_input" type="text/plain" name="epilogue" rows="4" oninput="epilogueInput(this)"
+					 placeholder="结束语默认为 “您的答案已提交，感谢您的参与！”"></textarea>
+				</div>
+			</form>
+			<!-- 底部按钮 -->
+			<div class="content-bottom">
+				<button class="btn-theme hide" id="j_save_btn">保存</button>
+				<button id="j_next_btn" class="btn-theme" onclick="$('#j_vote_form').submit();">下一步，问题设置</button>
+			</div>
+		</div>
+		<!-- content /end -->
+	</div>
+	<script>
+		// 输入标题
+		function titleInput(_this) {
+			$('#j_title_count').html(_this.value.length + '/32');
+			$('#j_thumb_list').find('li.active').attr('data-title', _this.value || '请输入标题...');
+		}
+		// 输入结语
+		function epilogueInput(_this) {
+			$('#j_thumb_list').find('li.active').attr('data-epilogue',_this.value || '您的答案已提交，感谢您的参与！');
+		}
+		// 输入摘要
+		function abstractInput(_this) {
+			_this.value=_this.value.substr(0, 128);$('#j_abstract_count').html(_this.value.length+'/128');
+		}
+	</script>

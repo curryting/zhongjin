@@ -1,0 +1,42 @@
+<div class="content-wrapper product-detail">
+	<div class="content" id="j_product_detail">
+		<!-- 顶部功能按钮 -->
+		<div class="content-top">
+			<a href="javascript:window.history.back()">
+				<button class="btn-theme-o">返回</button>
+			</a>
+			<a href="#/product/edit/" id="j_edit_product">
+				<button class="btn-theme modify">修改</button>
+			</a>
+		</div>
+		<!-- 主体内容 -->
+		<div class="content-body" id="j_product_scope">
+			<div class="product-info">
+				<div class="col-left">
+					<p><span>产品名称：</span><span bind-data="{product.name}"></span></p>
+					<p><span>成立日期：</span><span bind-data="{product.establish}"></span></p>
+					<p><span>产品年限：</span><span bind-data="{product.deadline}"></span></p>
+					<p><span>投资范围：</span><span bind-data="{product.scope}"></span></p>
+				</div>
+				<div class="col-right">
+					<p><span>产品状态：</span><span bind-data="{product.status}"></span></p>
+					<p><span class="spacing">管  理  人：</span><span bind-data="{product.manager}"></span></p>
+					<p><span class="spacing">币       种：</span><span bind-data="{product.currency}"></span></p>
+					<p><span>托管机构：</span><span bind-data="{product.trusteeship}"></span></p>
+				</div>
+			</div>
+			<div class="product-charge">
+				<div class="col-left">
+					<p><span>认购费：</span><span bind-data="{product.subscription_fee}"></span></p>
+					<p><span>管理费：</span><span bind-data="{product.management_fee}"></span></p>
+					<p class="offset-2"><span>外包服务费：</span><span bind-data="{product.outsourcing_fee}"></span></p>
+				</div>
+				<div class="col-right">
+					<p><span>托管费：</span><span bind-data="{product.trust_fee}"></span></p>
+					<p><span>其他费用：</span><span bind-data="{product.redemption_fee}"></span></p>
+				</div>
+			</div>
+		</div>
+		<!-- content end -->
+	</div>
+</div>

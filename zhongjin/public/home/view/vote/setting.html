@@ -1,0 +1,199 @@
+<!-- 新建投票 -->
+<div class="content-wrapper add-vote">
+    <div class="content vote-setting">
+        <!-- 引导序号 -->
+        <div class="content-top">
+            <ul class="steps clearfix">
+                <li class="steps-step">
+                    <span class="num">1</span>
+                    <span class="des">编辑投票内容</span>
+                </li>
+                <li class="steps-line"></li>
+                <li class="steps-step ">
+                    <span class="num">2</span>
+                    <span class="des">添加投票选项</span>
+                </li>
+                <li class="steps-line"></li>
+                <li class="steps-step  active">
+                    <span class="num">3</span>
+                    <span class="des">功能设置</span>
+                </li>
+            </ul>
+        </div>
+        <!-- 表单 -->
+        <div class="content-body">
+            <form id="j_vote_form" onsubmit="return false">
+                <!-- 投票状态 -->
+                <section>
+                    <div class="form-group">
+                        <label class="tag-left">投票状态：</label>
+                        <input type="radio" name="status" id="vote_normal" value="1" checked="checked">
+                        <label for="vote_normal">正常</label>
+                        <input type="radio" name="status" id="vote_over" value="2">
+                        <label for="vote_over">结束</label>
+                        <input type="radio" name="status" id="vote_pause" value="3">
+                        <label for="vote_pause">暂停</label>
+                    </div>
+                </section>
+                <!-- 投票时间 -->
+                <section class="hide">
+                    <div class="form-group">
+                        <label class="tag-left">开始时间：</label>
+                        <input type="radio" name="start_time" id="no_begin_time" value="0" checked="checked">
+                        <label for="no_begin_time">不指定开始时间</label>
+                        <input type="radio" name="start_time" id="assign_begin_time" value="">
+                        <label for="assign_begin_time">指定开始时间</label>
+                        <input class="time-input" type="text" id="j_begin_time" readonly="true">
+                    </div>
+                    <div class="form-group">
+                        <label class="tag-left">结束时间：</label>
+                        <input type="radio" name="end_time" id="no_end_time" value="0" checked="checked">
+                        <label for="no_end_time">不指定结束时间</label>
+                        <input type="radio" name="end_time" id="assign_end_time" value="">
+                        <label for="assign_end_time">指定结束时间</label>
+                        <input class="time-input" type="text" id="j_end_time" readonly="true">
+                    </div>
+                </section>
+                <!-- 投票前显示设置 -->
+                <!-- <section>
+                    <p class="title"><label>排序和统计显示设置（投票前）：</label></p>
+                    <div class="form-group">
+                        <label class="tag-left">统计显示设置：</label>
+
+                        <input type="checkbox" name="statistics_0" id="ck_num_0" value="num" checked="checked">
+                        <label class="checkbox-tag" for="ck_num_0">显示票数</label>
+
+                        <input type="checkbox" name="statistics_0" id="ck_bar_0" value="bar">
+                        <label class="checkbox-tag" for="ck_bar_0">显示条状图</label>
+
+                        <input type="checkbox" name="statistics_0" id="ck_percent_0" value="per">
+                        <label class="checkbox-tag" for="ck_percent_0">显示得票百分比</label>
+                    </div>
+                    <div class="form-group">
+                        <label class="tag-left">总投票人次设置：</label>
+
+                        <input type="radio" name="rate_0" id="show_rate_0" value="on" checked="checked">
+                        <label for="show_rate_0">显示</label>
+
+                        <input type="radio" name="rate_0" id="hide_rate_0" value="off">
+                        <label for="hide_rate_0">不显示</label>
+                    </div>
+                    <div class="form-group">
+                        <label class="tag-left">总访问量设置：</label>
+
+                        <input type="radio" name="visited_0" id="show_visited_0" value="on" checked="checked">
+                        <label for="show_visited_0">显示</label>
+
+                        <input type="radio" name="visited_0" id="hide_visited_0" value="off">
+                        <label for="hide_visited_0">不显示</label>
+                    </div>
+                </section> -->
+                <!-- 投票后显示设置 -->
+                <!-- <section>
+                    <p class="title"><label>排序和统计显示设置（投票后）：</label></p>
+                    <div class="form-group">
+                        <label class="tag-left">统计显示设置：</label>
+
+                        <input type="checkbox" name="statistics_1" id="ck_num_1" value="num" checked="checked">
+                        <label class="checkbox-tag" for="ck_num_1">显示票数</label>
+
+                        <input type="checkbox" name="statistics_1" id="ck_bar_1" value="bar">
+                        <label class="checkbox-tag" for="ck_bar_1">显示条状图</label>
+
+                        <input type="checkbox" name="statistics_1" id="ck_percent_1" value="per">
+                        <label class="checkbox-tag" for="ck_percent_1">显示得票百分比</label>
+                    </div>
+                    <div class="form-group">
+                        <label class="tag-left">总投票人次设置：</label>
+
+                        <input type="radio" name="rate_1" id="show_rate_1" value="on" checked="checked">
+                        <label for="show_rate_1">显示</label>
+
+                        <input type="radio" name="rate_1" id="hide_rate_1" value="off">
+                        <label for="hide_rate_1">不显示</label>
+                    </div>
+                    <div class="form-group">
+                        <label class="tag-left">总访问量设置：</label>
+
+                        <input type="radio" name="visited_1" id="show_visited_1" value="on" checked="checked">
+                        <label for="show_visited_1">显示</label>
+
+                        <input type="radio" name="visited_1" id="hide_visited_1" value="off">
+                        <label for="hide_visited_1">不显示</label>
+                    </div>
+                </section> -->
+                <!-- 投票截止显示设置 -->
+                <!-- <section>
+                    <p class="title"><label>排序和统计显示设置（投票截止）：</label></p>
+                    <div class="form-group">
+                        <label class="tag-left">统计显示设置：</label>
+
+                        <input type="checkbox" name="statistics_2" id="ck_num_2" value="num" checked="checked">
+                        <label class="checkbox-tag" for="ck_num_2">显示票数</label>
+
+                        <input type="checkbox" name="statistics_2" id="ck_bar_2" value="bar">
+                        <label class="checkbox-tag" for="ck_bar_2">显示条状图</label>
+
+                        <input type="checkbox" name="statistics_2" id="ck_percent_2" value="per">
+                        <label class="checkbox-tag" for="ck_percent_2">显示得票百分比</label>
+                    </div>
+                    <div class="form-group">
+                        <label class="tag-left">总投票人次设置：</label>
+
+                        <input type="radio" name="rate_2" id="show_rate_2" value="on" checked="checked">
+                        <label for="show_rate_2">显示</label>
+
+                        <input type="radio" name="rate_2" id="hide_rate_2" value="off">
+                        <label for="hide_rate_2">不显示</label>
+                    </div>
+                    <div class="form-group">
+                        <label class="tag-left">总访问量设置：</label>
+
+                        <input type="radio" name="visited_2" id="show_visited_2" value="on" checked="checked">
+                        <label for="show_visited_2">显示</label>
+
+                        <input type="radio" name="visited_2" id="hide_visited_2" value="off">
+                        <label for="hide_visited_2">不显示</label>
+                    </div>
+                </section> -->
+                <!-- 排行榜显示条件 -->
+                <!-- <section>
+                    <div class="form-group">
+                        <label class="tag-left">排行显示条件：</label>
+
+                        <input type="radio" name="rank" id="always_show" value="1" checked="checked">
+                        <label for="always_show">总可以看</label>
+
+                        <input type="radio" name="rank" id="show_after_end" value="2">
+                        <label class="check-tag" for="show_after_end">投票后或者投票截止后才可以看</label>
+
+                        <input type="radio" name="rank" id="show_after_over" value="3">
+                        <label for="show_after_over">投票截止后可以看</label>
+                    </div>
+                </section> -->
+                <!-- 设备限制 -->
+                <section class="hide">
+                    <div class="form-group">
+                        <label class="tag-left">设备限制：</label>
+                        <span class="limit">针对同一设备重复投票限制</span>
+                        <select name="type">
+                            <option value="1">只能投</option>
+                            <option value="2">每日投</option>
+                        </select>
+                        <input class="num-input" type="number" name="num" min="1" value="1">
+                        <label class="unit">次</label>
+                    </div>
+                </section>
+            </form>
+        </div>
+        <!-- 底部按钮 -->
+        <div class="content-bottom">
+            <div class="btn-group">
+                <button class="btn-theme-o hide" id="j_prev_btn">上一步，问题设置</button>
+                <button class="btn-theme hide" id="j_publish_btn">发布</button>
+                <button class="btn-theme" id="j_save_btn">保存</button>
+            </div>
+        </div>
+    </div>
+    <!-- content /end -->
+</div>

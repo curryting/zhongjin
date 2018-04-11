@@ -1,0 +1,108 @@
+<!-- 新建新闻 -->
+
+<div class="content-wrapper add-news">
+	<div class="content">
+		<div class="content-body">
+			<div class="form-wrapper">
+				<!-- 发送对象 -->
+				<form onsubmit="return false">
+					<div class="form-group">
+						<label class="required">发送对象：</label>
+						<input type="radio" name="send_type" id="all" value="0" checked="checked">
+						<label class="check-tag" for="all">全员</label>
+						<!-- 指定对象 -->
+						<input type="radio" name="send_type" id="some_body" value="1">
+						<label class="check-tag" for="some_body">指定对象</label>
+						<input type="text" class="useless" id="j_selected_member" readonly="true">
+						<button type="button" class="btn-theme" id="j_show_selectOBJ">选择对象</button>
+					</div>
+				</form>
+				<!-- 右侧填写新闻表单 -->
+				<form enctype="multipart/form-data" onsubmit="return false" id="j_add_news_form">
+					<!-- 新闻类型 -->
+					<div class="form-group">
+						<label class="required">新闻类型：</label>
+						<input type="radio" name="news_type" id="project" value="1" checked="checked">
+						<label class="check-tag" for="project">项目动态</label>
+						<input type="radio" name="news_type" id="abstracts" value="2">
+						<label class="check-tag" for="abstracts">精选文摘</label>
+						<input type="radio" name="news_type" id="company" value="3">
+						<label class="check-tag" for="company">公司动态</label>
+					</div>
+					<!-- 新闻标题 -->
+					<div class="form-group">
+						<label class="required">标题：</label>
+						<input type="text" name="title" maxlength="32" oninput="titleInput(this)" placeholder="请输入新闻标题，最多可输入32个字" required>
+						<span class="word-count" id="j_title_count">0/32</span>
+					</div>
+					<!-- 封面 -->
+					<div class="form-group">
+						<label class="required">封面：</label>
+						<a class="upload-file" id="j_browse_btn">选择封面</a>
+						<span class="upload-tip" id="j_file_name_place" title="(推荐尺寸：900*500,图片大小不超过64K)">(推荐尺寸：900*500,图片大小不超过64K)</span>
+						<div id="j_upload_container">
+							<img id="j_preview_img" class="hide preview-pic" alt="">
+						</div>
+						<!-- 上传的图片id -->
+						<input type="hidden" name="cover_id" id="j_cover_id" required>
+					</div>
+					<!-- 摘要 -->
+					<div class="form-group">
+						<label>摘要：</label>
+						<textarea type="text/plain" name="abstract" maxlength="128" rows="4" oninput="abstractInput(this)" placeholder="请输入新闻摘要，最多可输入128字"></textarea>
+						<span class="word-count" id="j_abstract_count">0/128</span>
+					</div>
+					<!-- 正文 -->
+					<div class="form-group">
+						<label class="required">正文：</label>
+						<div class="editor-wrapper">
+							<textarea id="j_u_editor" name="content" type="text/plain" rows="15" required></textarea>
+						</div>
+					</div>
+					<!-- 推送 -->
+					<div class="form-group">
+						<label>推送：</label>
+						<input type="checkbox" name="sync" value="1" id="push_to">
+						<label for="push_to">同步到公众号</label>
+					</div>
+					<!-- 提交按钮 -->
+					<div class="btn">
+						<button class="btn-theme" type="submit">发送</button>
+					</div>
+				</form>
+			</div>
+			<!-- 右侧预览 -->
+			<div class="preview">
+				<div class="btn">
+					<button class="btn-theme" id="j_weixin_preview">在微信端预览</button>
+				</div>
+				<ul class="thumb-list" id="j_thumb_list">
+					<li class="active" data-title="请输入标题...">
+						<div class="img"><img /></div>
+						<div class="handle">
+							<i class="icon icon-down j-move-down" title="下移"></i>
+							<i class="icon icon-up j-move-up" title="上移"></i>
+							<i class="icon icon-del j-del-this" title="删除"></i>
+						</div>
+					</li>
+					<li>
+						<a href="javascript:" class="icon add j-add-item">+</a>
+					</li>
+				</ul>
+			</div>
+		</div>
+	</div>
+	<!-- content /end -->
+</div>
+<script>
+	// 输入摘要
+	function abstractInput(_this) {
+		_this.value = _this.value.substr(0, 128); 
+		$('#j_abstract_count').html(_this.value.length + '/128');
+	}
+	// 输入标题
+	function titleInput(_this) {
+		$('#j_title_count').html(_this.value.length + '/32'); 
+		$('#j_thumb_list').find('li.active').attr('data-title', _this.value || '请输入标题...');
+	}
+</script>

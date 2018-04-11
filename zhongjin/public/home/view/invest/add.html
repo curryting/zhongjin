@@ -1,0 +1,73 @@
+<div class="content-wrapper add-invest">
+	<div class="content">
+		<div class="content-top">
+			<button class="btn-theme-o" onclick="javascript:window.history.back()">返回</button>
+		</div>
+		<div class="content-body clearfix">
+			<form onsubmit="return false" id="j_addInvest_form">
+				<div class="form-group">
+					<label class="required">客户：</label>
+					<input type="text" id="j_client_name" autocomplete="off" placeholder="按姓名或手机号搜索">
+					<input type="hidden" name="id" id="j_client_id" required>
+					<div class="list-wrapper" id="j_list_wrapper">
+						<ul class="clients-list" id="j_select_list">
+							<li repeat-dom="clientList" data-id="{clientList.id}">{clientList.name}({clientList.mobile})</li>
+						</ul>
+						<div class="tip hide" id="j_nodata_tip">
+							<p>暂无此客户，是否添加？</p>
+							<div class="btn-group">
+								<button type="button" class="btn-cancel" onclick="$('#j_nodata_tip').addClass('hide');">取消</button>
+								<button type="button" class="btn-theme" id="j_show_addClient">添加</button>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="form-group">
+					<label class="required">投资产品：</label>
+					<select name="product" required id="j_product_list">
+						<option value="">请选择投资产品</option>
+						<option repeat-dom="product" value="{product.id}">{product.title}</option>
+					</select>
+				</div>
+				<div class="form-group">
+					<label class="required">开户银行：</label>
+					<input type="text" name="bank_name" placeholder="请输入开户银行" required>
+				</div>
+				<div class="form-group">
+					<label class="required">银行账号：</label>
+					<input type="number" name="bank_account" placeholder="请输入银行账号" required>
+				</div>
+				<div class="form-group">
+					<label class="required">投资金额：</label>
+					<input type="text" name="money" placeholder="请输入投资金额" required min="0">
+				</div>
+				<div class="form-group">
+					<label class="required">投资日期：</label>
+					<input type="text" name="invest_date" id="j_invest_date" class="time-input" readonly="true" placeholder="请选择投资日期" required>
+				</div>
+			</form>
+			<div class="info hide" id="j_client_info">
+				<p bind-class="{clientInfo.company_name ? 'show' : 'hide'}">
+					<span>公司名称：</span>
+					<span bind-data="{ clientInfo.company_name }"></span>
+				</p>
+				<p>
+					<span>手机号码：</span>
+					<span bind-data="{ clientInfo.mobile }"></span>
+				</p>
+				<p>
+					<span>证件类型：</span>
+					<span bind-data="{ [null, '身份证', '营业执照', '港澳通行证', '护照', '台胞回乡证', '其它'][clientInfo.credentials_type] }"></span>
+				</p>
+				<p>
+					<span>证件号码：</span>
+					<span bind-data="{ clientInfo.credentials }"></span>
+				</p>
+			</div>
+		</div>
+		<div class="content-bottom">
+			<button class="btn-theme" onclick="javascript:$('#j_addInvest_form').submit()">提交</button>
+		</div>
+	</div>
+	<!-- content/end -->
+</div>

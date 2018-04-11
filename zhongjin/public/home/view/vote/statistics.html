@@ -1,0 +1,49 @@
+<!-- 数据统计 -->
+<div class="content-wrapper vote-statistics">
+	<div class="content" id="j_statistics">
+		<!-- 投票标题 -->
+		<div class="content-top">
+			<h1 bind-data="{json.title}"></h1>
+			<div class="btn-group clearfix">
+				<button class="btn-theme-o" onclick="window.history.back();">返回</button>
+				<a class="download" id="j_download_report" href="">下载报告</a>
+			</div>
+		</div>
+		<!-- 主题内容 -->
+		<div class="content-body">
+			<!-- 每道题统计结果 -->
+			<div class="check-list">
+				<p class="timestamp">
+					<span class="start-time" bind-data="{json.stime == 0 ? '无限制' : json.stime}"></span>
+					<span>　 -- 　</span>
+					<span class="end-time" bind-data="{json.etime == 0 ? '无限制' : json.etime}"></span>
+				</p>
+				<div class="table-wrapper">
+					<table class="limit-row" id="j_statistics_table">
+						<thead>
+							<tr>
+								<th>选项</th>
+								<th>票数</th>
+								<th>占比</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr repeat-dom="answer">
+								<td>{answer.title}</td>
+								<td>{answer.count}</td>
+								<td>{answer.rate}</td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+				<p class="count">
+					<span class="vote-people">参与人次：</span>
+					<span bind-data="{json.people}"></span>
+					<span class="vote-num">累计票数：</span>
+					<span bind-data="{json.ticket}"></span>
+				</p>
+			</div>
+		</div>
+	</div>
+</div>
+<!-- content /end -->

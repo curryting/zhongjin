@@ -1,0 +1,72 @@
+
+<!-- 新闻详情 -->
+<div class="content-wrapper news-detail">
+	<div class="content" id="j_scroll_content">
+		<!-- 顶部功能按钮 -->
+		<div class="content-top">
+			<a href="javascript:window.history.back();">
+				<button class="btn-theme-o">返回</button>
+			</a>
+		</div>
+		<!-- 新闻内容 -->
+		<div class="content-body" id="j_news_detail">
+			<!-- 标题 -->
+			<h1 bind-data="{news.title}"></h1>
+			<!-- 时间戳/已读未读 -->
+			<div class="stamp">
+				<span class="time" bind-data="{news.timestamp}"></span>
+				<a href="javascript:" id="j_had_read" class="read-num"><ins bind-data="{news.had_read}"></ins>人已读</a>
+				<a href="javascript:" id="j_not_read" class="unread-num"><ins bind-data="{news.not_read}"></ins>人未读</a>
+			</div>
+			<!-- 摘要 -->
+			<p class="abstract" bind-data="{news.abstract}"></p>
+			<!-- 封面 -->
+			<div class="news-cover"><img bind-data="{news.cover}"></div>
+			<!-- 新闻内容 -->
+			<div class="news-content" bind-html="{news.content}"></div>
+			<!-- 作者 -->
+			<p class="author"><span>发布人: <ins bind-data="{news.author}"></ins></span></p>
+		</div>
+
+		<!-- 底部评论模块 -->
+		<div class="content-bottom">
+			<h2 class="title">全部评论</h2>
+			<ul class="comments-list" id="j_comments_list">
+				<!-- 评论项 -->
+				<li class="comment-item" repeat-dom="comment">
+					<!-- 头像 -->
+					<div class="item-left">
+						<img data-src="{comment.avatar}" alt="暂无头像" width="40" height="40">
+					</div>
+					<!-- 用户名，时间，评论内容 -->
+					<div class="item-right">
+						<div class="top">
+							<span class="username">{comment.name}</span>
+							<span class="timestamp">{comment.timestamp}</span>
+						</div>
+						<p class="txt">{comment.content}</p>
+						<!-- 回复 -->
+						<ul class="reply-list">
+							<li repeat-dom="reply">
+								<a class="link" href="javascript:">
+									<img data-src="{reply.avatar}" alt="暂无头像">
+									<span>{reply.memid === reply.admin_id ? '我' : reply.name}</span>
+								</a>
+								<span class="txt-grey {reply.to_name ? '' : 'hide'}">回复</span>
+								<a class="link {reply.to_name ? '' : 'hide'}" href="javascript:">
+									<img data-src="{reply.to_avatar}" alt="暂无头像">
+									<span>{reply.to_name}</span>
+								</a>
+								<span class="txt-grey {reply.to_name ? '' : 'hide'}">:</span>
+								<span>{reply.content}</span>
+							</li>
+						</ul>
+						<a href="javascript:" class="link j-get-reply-btn {comment.reply_count ? 'show' : 'hide'}" data-id="{comment.id}}">共 {comment.reply_count} 条回复↓</a>
+					</div>
+				</li>
+			</ul>
+			<p class="tip"><span id="j_loading_tip"></span></p>
+		</div>
+	</div>
+	<!-- content /end -->
+</div>

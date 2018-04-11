@@ -1,0 +1,29 @@
+阿里云账号：
+http://www.aliyun.com
+
+hudongbanlv@foxmail.com
+JXHL-Kuning-^*160418
+
+
+
+服务器地址端口/帐号密码：
+
+[测试]：121.40.22.147:21314     root / Kuning-Ecs-@$test_0418
+
+[正式]：121.199.15.41:21314     root / Kuning-Ecs-$@line_50
+
+[正式]：120.55.190.50:21314     root / Kuning-Ecs-$@line_50
+
+[正式]：120.55.190.185:21314     root / Kuning-Ecs-$@line_50
+
+
+数据库账号：
+[测试库]：jxhl_api / Kuning-Rds-Api-$@0506
+
+[测试库]：jiaxiaotong / Kuning-Rds-@$160418
+
+[正式库]： jxhl_api / Kuning-Rds-Api-$@0506
+
+[正式库]： jiaxiaotong / Kuning-Rds-@$160418
+
+jxhl_sq / Jxhl-Rds-@$160418

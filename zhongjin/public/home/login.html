@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=1280">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge,chrome=1">
+    <meta name="renderer" content="webkit">
+    <link rel="shortcut icon" href="/home/favicon.ico">
+    <title>登录 -- 鼎心资本</title>
+    <link rel="stylesheet" href="/home/css/minireset.css">
+    <link rel="stylesheet" href="/home/css/login.css">
+    <!--[if lt IE 9]>
+      <script>
+        alert('您使用的浏览器版本过低，请升级浏览器');
+        window.location = 'http://browsehappy.osfipin.com'
+      </script>
+    <![endif]-->
+</head>
+
+<body>
+    <!-- 顶部导航栏 -->
+    <header>
+        <nav>
+            <a href="#" class="logo">
+                <img src="/home/images/logo.png" alt="">
+            </a>
+            <span class="title">后台管理系统</span>
+        </nav>
+    </header>
+    <!-- 登录模块 -->
+    <section>
+        <div class="container">
+            <img class="login-bg" src="/home/images/login-bg.jpg" alt="zj-bg">
+            <div class="login-wrapper">
+                <!-- 账户登录 -->
+                <div class="sign-in" id="j_sign_in">
+                    <div class="title">
+                        <p class="tab-name">登录</p>
+                        <p class="error-tip">提示内容</p>
+                    </div>
+                    <form id="j_sign_form" onsubmit="return false">
+                        <div class="form-group">
+                            <label>账号：</label>
+                            <input type="text" name="username" data-tip="ccc" placeholder="请输入账号" autofocus="autofocus" data-verify="account" required>
+                        </div>
+                        <div class="form-group">
+                            <label>密码：</label>
+                            <input type="password" name="password" placeholder="请输入密码" data-verify="password" required>
+                        </div>
+                        <div class="form-group">
+                            <label>验证码：</label>
+                            <input class="code-input" name="imgcode" type="text" placeholder="请输入验证码" autocomplete="off" data-verify="imgcode" required>
+                            <img class="img-code j-img-code" src="/home/user/vcode" alt="loading...">
+                        </div>
+                        <p class="forget-tip">
+                            <span id="j_forget">忘记密码</span>
+                        </p>
+                        <div class="btn">
+                            <button class="btn-theme">登录</button>
+                        </div>
+                    </form>
+                </div>
+                <!-- 忘记密码 -->
+                <div class="forget-password" id="j_forget_password">
+                    <div class="title">
+                        <p class="tab-name">忘记密码</p>
+                        <p class="error-tip">提示内容</p>
+                    </div>
+                    <form id="j_forget_form" onsubmit="return false">
+                        <div class="form-group">
+                            <label>账号：</label>
+                            <input type="text" name="username" placeholder="请输入账号" data-verify="account" required>
+                        </div>
+                        <div class="form-group">
+                            <label>手机验证码：</label>
+                            <input class="code-input" name="phonecode" type="text" placeholder="请输入手机验证码" autocomplete="off" data-verify="phonecode"
+                                required>
+                            <button class="btn-theme get-phone-code" type="button" id="j_phone_code" onclick="return false">发送验证码</button>
+                        </div>
+                        <div class="form-group">
+                            <label>新密码：</label>
+                            <input type="password" name="password" id="j_new_pwd" placeholder="请设置新的密码" data-verify="password" required>
+                        </div>
+                        <div class="form-group">
+                            <label>确认密码：</label>
+                            <input type="password" name="confirmpassword" id="j_confirm_pwd" placeholder="请再次输入密码" data-verify="password" required>
+                        </div>
+                        <div class="form-group">
+                            <label>验证码：</label>
+                            <input class="code-input" type="text" name="imgcode" placeholder="请输入验证码" autocomplete="off" data-verify="imgcode" required>
+                            <img class="img-code j-img-code" src="" alt="loading...">
+                        </div>
+                        <div class="btn">
+                            <button id="j_cancel" type="button" class="btn-cancel">取消</button>
+                            <button class="btn-theme" type="submit">确认</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <!-- login-wrapper /end -->
+        </div>
+    </section>
+    <script src="/home/script/lib/jquery/jquery-2.2.4.min.js"></script>
+    <script src="/home/script/module/sign.js"></script>
+</body>
+
+</html>

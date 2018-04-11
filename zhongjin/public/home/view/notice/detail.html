@@ -1,0 +1,82 @@
+<div class="content-wrapper notice-detail">
+	<div class="content" id="j_scroll_content">
+		<!-- 顶部功能按钮 -->
+		<div class="content-top">
+			<a href="javascript:window.history.back();">
+				<button class="btn-theme-o">返回</button>
+			</a>
+		</div>
+		<!-- 通知内容 -->
+		<div class="content-body" id="j_notice_detail">
+			<!-- 标题 -->
+			<h1 bind-data="{notice.title}"></h1>
+			<!-- 时间戳/已读未读 -->
+			<div class="stamp">
+				<span class="time" bind-data="{notice.timestamp}"></span>
+				<a href="javascript:" id="j_had_read" class="read-num">
+					<ins bind-data="{notice.had_read}"></ins>人已读</a>
+				<a href="javascript:" id="j_not_read" class="unread-num">
+					<ins bind-data="{notice.not_read}"></ins>人未读</a>
+			</div>
+			<!-- 封面 -->
+			<div class="notice-abstract" bind-data="{notice.abstract}"></div>
+			<!-- 通知内容 -->
+			<div class="notice-content" bind-html="{notice.content}"></div>
+			<!-- 作者 -->
+			<p class="author">
+				<span>发布人:
+					<ins bind-data="{notice.author}"></ins>
+				</span>
+			</p>
+			<!-- 附件 -->
+			<ol class="attachments hide" bind-class="{notice.type == 3 ? 'show' : 'hide'}">
+				<li>
+					<span bind-data="{notice.filename}"></span>
+					<a class="btn-theme-o" bind-href="{notice.filepath}">下载</a>
+				</li>
+			</ol>
+		</div>
+		<!-- 底部评论模块 -->
+		<div class="content-bottom">
+			<h2 class="title">全部评论</h2>
+			<ul class="comments-list" id="j_comments_list">
+				<!-- 评论项 -->
+				<li class="comment-item" repeat-dom="comment">
+					<!-- 头像 -->
+					<div class="item-left">
+						<img data-src="{comment.avatar}" alt="avatar" width="40" height="40">
+					</div>
+					<!-- 用户名，时间，评论内容 -->
+					<div class="item-right">
+						<div class="top">
+							<span class="username">{comment.name}</span>
+							<span class="timestamp">{comment.timestamp}</span>
+						</div>
+						<p class="txt">{comment.content}</p>
+						<!-- 回复 -->
+						<ul class="reply-list">
+							<li repeat-dom="reply">
+								<a class="link" href="javascript:">
+									<img data-src="{reply.avatar}" alt="暂无头像">
+									<span>{reply.memid === reply.admin_id ? '我' : reply.name}</span>
+								</a>
+								<span class="txt-grey {reply.to_name ? '' : 'hide'}">回复</span>
+								<a class="link {reply.to_name ? '' : 'hide'}" href="javascript:">
+									<img data-src="{reply.to_avatar}" alt="暂无头像">
+									<span>{reply.to_name}</span>
+								</a>
+								<span class="txt-grey {reply.to_name ? '' : 'hide'}">:</span>
+								<span>{reply.content}</span>
+							</li>
+						</ul>
+						<a href="javascript:" class="link j-get-reply-btn {comment.reply_count ? 'show' : 'hide'}" data-id="{comment.id}}">共 {comment.reply_count} 条回复↓</a>
+					</div>
+				</li>
+			</ul>
+			<p class="tip">
+				<span id="j_loading_tip"></span>
+			</p>
+		</div>
+	</div>
+	<!-- content /end -->
+</div>

@@ -1,0 +1,124 @@
+<!-- 新建投票 -->
+<div class="content-wrapper add-vote">
+    <div class="content vote-question">
+        <!-- 引导序号 -->
+        <div class="content-top">
+            <ul class="steps clearfix">
+                <li class="steps-step">
+                    <span class="num">1</span>
+                    <span class="des">编辑投票内容</span>
+                </li>
+                <li class="steps-line"></li>
+                <li class="steps-step active">
+                    <span class="num">2</span>
+                    <span class="des">添加投票选项</span>
+                </li>
+                <li class="steps-line"></li>
+                <li class="steps-step">
+                    <span class="num">3</span>
+                    <span class="des">功能设置</span>
+                </li>
+            </ul>
+        </div>
+        <!-- 表单 -->
+        <div class="content-body">
+            <form id="j_vote_form" onsubmit="return false">
+                <!-- 问题单元 -->
+                <div class="question-unit">
+                    <!-- 问题标题 -->
+                    <!-- <div class="form-group">
+                        <label class="required">问题标题：</label>
+                        <input type="text" name="title" maxlength="32" placeholder="最多可输入32个字" required oninput="titleInput(this)">
+                    </div> -->
+                    <!-- 问题类型 -->
+                    <div class="form-group">
+                        <label class="required">问题类型：</label>
+                        <input id="single_ck" type="radio" name="type" value="1" onclick="disableLimit()"
+                            checked>
+                        <label class="check-tag" for="single_ck">单选</label>
+                        <input id="multiple_ck" type="radio" name="type" value="2" onclick="enableLimit()">
+                        <label class="check-tag" for="multiple_ck">多选</label>
+                        <!-- 最多选择 -->
+                        <span>
+                            <label>最少选择</label>
+                            <select name="least" id="j_min_ck" disabled>
+                                <option value="1">1项</option>  
+                                <option value="2">2项</option>  
+                            </select>
+                            <!-- 最少选择 -->
+                            <label>最多选择</label>
+                            <select name="most" id="j_max_ck" disabled required min="2">
+                                <option>请选择</option>  
+                                <option value="2">2项</option>  
+                            </select>
+                        </span>
+                        <!-- 是否必填 -->
+                        <!-- <input type="checkbox" name="required" id="j-required" value="1">
+                        <label class="j-required-label" for="j-required">必答题</label> -->
+                    </div>
+                    <!-- 问题设置 -->
+                    <div class="form-group set-question">
+                        <label class="required question-set">选项设置：</label>
+                        <div class="option-wrapper limit" id="j_option_wrapper">
+                            <!-- option 1 -->
+                            <div class="question-option j-option-unit">
+                                <div class="option-left">
+                                    <textarea name="option" rows="3" placeholder="选项描述" required></textarea>
+                                </div>
+                                <div class="option-right">
+                                    <ul class="clearfix">
+                                        <li><a href="javascript:" class="j-handle j-del del" title="删除该项"></a href="javascript:"></li>
+                                        <li><a href="javascript:" class="j-handle j-add add" title="增加一项"></a href="javascript:"></li>
+                                        <li><a href="javascript:" class="j-handle j-up move-up" title="向上上移"></a href="javascript:"></li>
+                                        <li><a href="javascript:" class="j-handle j-down move-down" title="向下移动"></a href="javascript:"></li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <!-- option 2 -->
+                            <div class="question-option j-option-unit">
+                                <div class="option-left">
+                                    <textarea name="option" rows="3" placeholder="选项描述" required></textarea>
+                                </div>
+                                <div class="option-right">
+                                    <ul class="clearfix">
+                                        <li><a href="javascript:" class="j-handle j-del del" title="删除该项"></a href="javascript:"></li>
+                                        <li><a href="javascript:" class="j-handle j-add add" title="增加一项"></a href="javascript:"></li>
+                                        <li><a href="javascript:" class="j-handle j-up move-up" title="向上上移"></a href="javascript:"></li>
+                                        <li><a href="javascript:" class="j-handle j-down move-down" title="向下移动"></a href="javascript:"></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+        <!-- 底部按钮 -->
+        <div class="content-bottom">
+            <div class="btn-group">
+                <button class="btn-theme-o" id="j_prev_btn">上一步，问题设置</button>
+                <button class="btn-theme hide" id="j_save_btn">保存</button>
+                <button class="btn-theme" id="j_next_btn" onclick="$('#j_vote_form').submit();">下一步，功能设置</button>
+            </div>
+        </div>
+    </div>
+    <!-- content /end -->
+</div>
+<script>
+
+// 标题输入
+function titleInput(_this) {
+    $('#j_preview_opt').children().eq($(_this).parents('form').index()).find('.txt').text(_this.value || '请输入标题...');
+}
+// 禁用选择限制
+function disableLimit() {
+    $('#j_min_ck').attr('disabled', true);
+    $('#j_max_ck').attr('disabled', true);
+}
+// 启用选择限制
+function enableLimit() {
+    $('#j_min_ck').removeAttr('disabled');
+    $('#j_max_ck').removeAttr('disabled');
+}
+
+</script>

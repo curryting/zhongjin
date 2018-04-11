@@ -1,0 +1,227 @@
+<!-- 新建调研 -->
+<div class="content-wrapper add-survey">
+	<!-- content -->
+	<div class="content survey-question">
+		<div class="content-top">
+			<div class="btn-group">
+				<button class="btn-theme-o" disabled>1.编辑调研内容</button>
+				<button class="btn-theme" disabled>2.问题设置</button>
+			</div>
+		</div>
+		<!-- content-body -->
+		<div class="content-body">
+			<div class="form-wrapper limit" id="j_form_wrapper">
+				<form id="j_survey_form" class="active j-q-form limit" onsubmit="return false">
+					<!-- 问题id -->
+					<input type="hidden" name="question_id">
+					<!-- 问题单元 -->
+					<div class="question-unit j-question-unit">
+						<!-- 问题类型 -->
+						<div class="form-group question-type">
+							<label class="required">问题类型：</label>
+							<select name="type" onchange="changeQuestionType(this)">
+								<option value="1">单选</option>
+								<option value="2">多选</option>
+								<option value="3">单行文本框</option>
+								<option value="4">多行文本框</option>
+							</select>
+							<input type="checkbox" name="required" value="1">
+							<label class="j-required-label" onclick="toggleRequired(this)">必答题</label>
+						</div>
+						<!-- 问题标题 -->
+						<div class="form-group">
+							<label class="required">问题标题：</label>
+							<input type="text" name="title" maxlength="32" placeholder="最多可输入32个字" required oninput="titleInput(this)">
+						</div>
+						<!-- 问题设置 -->
+						<div class="form-group set-question">
+							<label class="required question-set" for="quiz_title">问选项设置：</label>
+							<div class="option-wrapper">
+								<!-- option 1 -->
+								<div class="question-option j-option-unit">
+									<div class="option-left">
+										<textarea class="invalid" rows="3" name="option" type="text/plain" placeholder="选项描述" value="" required oninput="textAreaInput(this)"></textarea>
+									</div>
+									<div class="option-right">
+										<span class="reduce" onclick="reduceOption(this)"></span>
+										<span class="add" onclick="addOption(this)"></span>
+									</div>
+								</div>
+								<!-- option 2 -->
+								<div class="question-option j-option-unit">
+									<div class="option-left">
+										<textarea class="invalid" rows="3" name="option" type="text/plain" placeholder="选项描述" value="" required oninput="textAreaInput(this)"></textarea>
+									</div>
+									<div class="option-right">
+										<span class="reduce" onclick="reduceOption(this)"></span>
+										<span class="add" onclick="addOption(this)"></span>
+									</div>
+								</div>
+							</div>
+						</div>
+						<!-- 最多选择 -->
+						<div class="form-group hide limit">
+							<label>多选限制：</label>
+							<span>
+								<label>最少选择</label>
+								<select name="least" disabled onchange="limitSelect(this)">
+									<option value="1">1项</option>
+									<option value="2">2项</option>
+								</select>
+								<!-- 最少选择 -->
+								<label>最多选择</label>
+								<select name="most" disabled required min="2">
+									<option>请选择</option>
+									<option value="2">2项</option>
+								</select>
+							</span>
+						</div>
+						<!-- 问题验证属性 -->
+						<!-- <div class="form-group verify-attr hide">
+							<label class="required">问题验证属性：</label>
+							<select name="verify" disabled>
+								<option value="int">整数</option>
+								<option value="dec">小数</option>
+								<option value="phone">手机</option>
+								<option value="tel">固话</option>
+								<option value="mail">邮件</option>
+							</select>
+						</div> -->
+						<!-- 右上角关闭按钮 -->
+						<span class="close j-remove-form"></span>
+					</div>
+				</form>
+				<!-- 填加问题按钮 -->
+				<button type="button" id="j_add_question" class="btn-theme-o add-question">
+					<span>添加问题</span>
+				</button>
+				<div class="btn-group">
+					<button data-href="#/survey/add/0" class="btn-theme-o" id="j_prev_btn">上一步，编辑调研内容</button>
+					<button class="btn-theme" id="j_publish_btn">发布</button>
+					<button class="btn-theme" id="j_save_btn">保存</button>
+				</div>
+			</div>
+			<!-- 右侧预览 -->
+			<div class="preview">
+				<div class="preview-content" id="j_preview_content">
+					<div class="preview-detail">
+						<ol class="title" type="1" id="j_preview_opt">
+							<li data-rq="">
+								<p class="txt" data-type="1">请输入标题...</p>
+								<ol class="options" type="A">
+									<li>选项描述</li>
+									<li>选项描述</li>
+								</ol>
+								<div class="ins" contenteditable="true"></div>
+							</li>
+						</ol>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- content /end -->
+</div>
+<script>
+	// 切换勾选必达
+	function toggleRequired(_this) {
+		$(_this).prev().click();
+		$(_this).prev()[0].checked
+			? $('#j_preview_opt').children().eq($(_this).parents('form').index()).attr('data-rq', '*')
+			: $('#j_preview_opt').children().eq($(_this).parents('form').index()).removeAttr('data-rq');
+	}
+	// 切换问题类型
+	function changeQuestionType(_this) {
+		if (_this.value == 1) {
+			hideLimt(_this); // 隐藏多选限制
+			showOption(_this); // 显示问题单元
+		} else if (_this.value == 2) {
+			showLimit(_this);
+			showOption(_this);
+		} else {
+			hideLimt(_this); // 隐藏多选限制
+			hideOption(_this);
+		}
+		setPreviewQuestionType(_this);
+	}
+	// *******************************
+	function showLimit(_this) {
+		$(_this).parent().siblings('.limit').removeClass('hide').find('select').removeAttr('disabled');
+	}
+	function hideLimt(_this) {
+		$(_this).parent().siblings('.limit').addClass('hide').find('select').attr('disabled', true);
+	}
+	function showOption(_this) {
+		$(_this).parent().siblings('.set-question').removeClass('hide').find('textarea').removeAttr('disabled');
+	}
+	function hideOption(_this) {
+		$(_this).parent().siblings('.set-question').addClass('hide').find('textarea').attr('disabled', true);
+	}
+	function setPreviewQuestionType (_this) {
+		$('#j_preview_opt').children().eq($(_this).parents('form').index()).find('p.txt').attr('data-type', _this.value)
+			.next().children().removeClass('active');
+	}
+	// *********************
+
+ 	// 标题输入
+	function titleInput(_this) {
+		$('#j_preview_opt').children().eq($(_this).parents('form').index()).find('.txt').text(_this.value || '请输入标题...');
+	}
+	// 文本域输入
+	function textAreaInput(_this) {
+		_this.value ? _this.className = 'valid' : _this.className = 'invalid';
+		$('#j_preview_opt').children().eq($(_this).parents('form').index())
+			.find('ol').children('li').eq($(_this).parents('.j-option-unit').index())
+			.text(_this.value || '选项描述');
+	}
+	// 减少一个选项
+	function reduceOption(_this) {
+
+		var optionLength = $(_this).parents('form').find('.option-wrapper').children().length - 1;
+		setOptionLimit(_this, optionLength)
+		// limit	
+		$(_this).parents('.form-group').siblings('.limit').find('select').find('option:last').remove();
+
+		$('#j_preview_opt').children().eq($(_this).parents('form').index()).find('ol').children()
+			.eq($(_this).parents('.j-option-unit').index()).remove(); $(_this).parent().parent().remove();
+
+	}
+	// 增加一个问题选项
+	function addOption(_this) {
+		$(_this).parents('.j-option-unit')
+			.after($(_this).parent().parent().clone().find('textarea').val('').attr('class', 'invalid').end());
+
+		$('#j_preview_opt').children().eq($(_this).parents('form').index())
+			.find('ol').children('li').eq($(_this).parents('.j-option-unit').index())
+			.after('<li>选项描述</li>');
+		// limit
+		var $selects = $(_this).parents('.form-group').siblings('.limit').find('select');
+		var index = $selects.children().length / 2;
+		$selects.append('<option value="'+ (index+1) +'">'+ (index+1) +'项</option>');
+		var optionLength = $(_this).parents('form').find('.option-wrapper').children().length;
+		setOptionLimit(_this, optionLength)
+	}
+
+	// 设置最小选择和最大选择数量 
+	function limitSelect(_this) {
+		var eqIndex = _this.value - 1;
+		$(_this).siblings('select').children().removeClass('hide').filter(':lt(' + eqIndex + ')').addClass('hide').end()
+		.each(function (index, ele) {
+			if (index === eqIndex) {
+				ele.selected = 'selected';
+			} else {
+				ele.removeAttribute('selected');
+			}
+		});
+	}
+     // 函数 -- 设置删除选项的限制
+	function setOptionLimit(_this, optionLength) {
+	
+		if (optionLength > 2) {
+			$(_this).parents('form').removeClass('limit');
+		} else {
+			$(_this).parents('form').addClass('limit');
+		}
+	}
+
+</script>

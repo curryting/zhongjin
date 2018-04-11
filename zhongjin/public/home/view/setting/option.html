@@ -1,0 +1,152 @@
+<!-- 应用设置 -->
+<div class="content-wrapper app-setting">
+    <div class="content">
+        <div class="content-top">
+            <ul class="clearfix tabs" id="js_tabs">
+                <li class="tab-menu active">URL设置</li>
+                <li class="tab-menu">自定义菜单</li>
+                <li class="tab-menu">自动回复</li>
+            </ul>
+        </div>
+        <div class="content-body">
+            <ul class="clearfix tab-items" id="js_tab_items">
+                <li class="tab-item set-url">
+                    <form action="">
+                        <p class="title"><label>URL（企业服务器号）：</label><span>http://www.zsdfjvd.cn/sdswiixbcsdsv/sdfds/adsv/asdsdd23ss/.html</span></p>
+                        <div class="form-group">
+                            <label>token：</label>
+                            <input type="text">
+                        </div>
+                        <div class="form-group">
+                            <label>EncodingAESKey：</label>
+                            <input type="text">
+                        </div>
+                    </form>
+                    <div class="bottom">
+                        <button class="btn-theme">确定</button>
+                    </div>
+                </li>
+                <li class="tab-item defined-menu hide">
+                    <div class="btn-group">
+                        <button class="btn-theme-o" id="js_add_menu">新增</button>
+                        <button class="btn-theme-o">删除</button>
+                        <button class="btn-theme-o">生产自定义菜单</button>
+                    </div>
+                    <div class="content">
+                        <div class="menu-list" id="js_menu_list">
+                            <table class="table-list">
+                                <thead>
+                                    <tr>
+                                        <th><input type="checkbox" name="" id="check_all"><label for="check_all">全选</label></th>
+                                        <th>菜单名</th>
+                                        <th>类型</th>
+                                        <th>关联关键字</th>
+                                        <th>关联URL</th>
+                                        <th>排序号</th>
+                                        <th>操作</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td><input type="checkbox" name="" id=""></td>
+                                        <td>精选文摘</td>
+                                        <td>无事件一级菜单</td>
+                                        <td>关键字、关键字、关键字</td>
+                                        <td>http://www.cmin.cnsja.xsdc.html</td>
+                                        <td>01</td>
+                                        <td>
+                                            <a href="#" class="handle">编辑</a>
+                                            <span class="split"></span>
+                                            <a href="#" class="handle del">删除</a>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td><input type="checkbox" name="" id=""></td>
+                                        <td>原创文摘</td>
+                                        <td>跳转URL</td>
+                                        <td>关键字、关键字、关键字</td>
+                                        <td>http://www.cmin.cnsja.xsdc.html</td>
+                                        <td>02</td>
+                                        <td>
+                                            <a href="#" class="handle">编辑</a>
+                                            <span class="split"></span>
+                                            <a href="#" class="handle del">删除</a>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <div class="add-menu hide" id="js_form_add">
+                            <form action="">
+                                <div class="form-group">
+                                    <label for="serial">排序号：</label>
+                                    <input type="number" id="serial">
+                                    <span class="tip">(数值越小越靠前)</span>
+                                </div>
+                                <div class="form-group">
+                                    <label class="required" for="p_menu">上级菜单：</label>
+                                    <select name="" id="p_menu">
+                                        <option value="">无</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label class="required" for="menu_title">菜单标题：</label>
+                                    <input type="text" required="required" id="menu_title">
+                                    <span class="tip">(标题名称)</span>
+                                </div>
+                                <div class="form-group">
+                                    <label class="required" for="menu_type">菜单类型：</label>
+                                    <select name="" id="menu_type">
+                                        <option value="">点击关键字事件</option>
+                                    </select>
+                                    <span class="tip">(如果是一级菜单并且有子菜单，请选择无事件的一级菜单)</span>
+                                </div>
+                                <div class="form-group">
+                                    <label for="key_words">菜单关键字：</label>
+                                    <input type="text" id="key_words">
+                                    <span class="tip">关键字</span>
+                                </div>
+                            </form>
+                            <div class="bottom">
+                                <button class="btn-cancel" id="js_cancel_add">取消</button>
+                                <button class="btn-theme">确定</button>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+                <li class="tab-item auto-reply hide">
+                    <form action="">
+                        <div class="form-group">
+                            <label for="auto_reply">自动回复：</label>
+                            <textarea name="" id="" cols="30" rows="10" placeholder="请输入自动回复内容"></textarea>
+                        </div>
+                    </form>
+                    <div class="bottom">
+                        <button class="btn-theme">确定</button>
+                    </div>
+                </li>
+            </ul>
+        </div>
+
+    </div>
+</div>
+
+<script>
+    // 切换选项卡
+    $('#js_tabs').on('click', 'li.tab-menu', function () {
+        $(this).addClass('active').siblings().removeClass('active');
+        $('#js_tab_items').children().eq($(this).index()).removeClass('hide').siblings().addClass('hide');
+    });
+
+    // 新增菜单
+    $('#js_add_menu').on('click', function () {
+        $('#js_menu_list').addClass('hide').siblings().removeClass('hide');
+        $(this).parent().addClass('hide');
+    });
+
+    // 取消新增
+    $('#js_cancel_add').on('click', function () {
+        $('#js_form_add').addClass('hide').siblings().removeClass('hide');
+        $('#js_add_menu').parent().removeClass('hide');
+    });
+</script>

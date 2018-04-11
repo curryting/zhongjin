@@ -1,0 +1,124 @@
+<div class="content-wrapper add-notice">
+	<div class="content">
+		<div class="content-body">
+			<div class="form" data-type="default-type">
+				<form onsubmit="return false">
+					<!-- 发送对象 -->
+					<div class="form-group">
+						<label class="required">发送对象：</label>
+						<input type="radio" name="send_type" id="all" value="0" checked="checked">
+						<label class="check-tag" for="all">全员</label>
+						<!-- 指定对象 -->
+						<input type="radio" name="send_type" id="some_body" value="1">
+						<label class="check-tag" for="some_body">指定对象</label>
+						<input type="text" class="useless" id="j_selected_member" readonly="true">
+						<button type="button" class="btn-theme" id="j_show_selectOBJ">选择对象</button>
+					</div>
+					<!-- 消息方式 -->
+					<div class="form-group notice-type" id="j_toggle_notice_type">
+						<label>消息方式：</label>
+						<label class="btn active" data-type="default" for="default_type">
+							<span>图文</span>
+							<input class="hide" type="radio" name="notice_type" id="default_type" value="1">
+						</label>
+						<label class="btn" data-type="text" for="text_type">
+							<span>文字</span>
+							<input class="hide" type="radio" name="notice_type" id="text_type" value="2">
+						</label>
+						<label class="btn" data-type="file" for="file_type">
+							<span>文件</span>
+							<input class="hide" type="radio" name="notice_type" id="file_type" value="3">
+						</label>
+					</div>
+				</form>
+				<form id="j_add_notice_form" enctype="multipart/form-data" onsubmit="return false">
+					<!-- 通知标题 -->
+					<div class="form-group title-group">
+						<label class="required">通知标题：</label>
+						<input id="j_title_input" type="text" name="title" maxlength="32" oninput="titleInput(this)"
+							placeholder="最多可输入32个字" required>
+						<span class="word-count" id="j_title_count">0/32</span>
+					</div>
+					<!-- 封面/附件 -->
+					<div class="form-group upload-group">
+						<div class="upload-picture">
+							<label class="required">选择图片：</label>
+							<a class="upload-file" id="j_browse_btn">选择图片</a>
+							<span class="upload-tip" id="j_file_name_place" title="(推荐尺寸：900*500,图片大小不超过64K)">(推荐尺寸：900*500,图片大小不超过64K)</span>
+							<div id="j_upload_container"><img id="j_preview_img" class="hide preview-pic"></div>
+							<!-- 上传的图图片的id -->
+							<input type="hidden" name="cover_id" id="j_cover_id" required>
+						</div>
+						<div class="upload-attachment">
+							<label class="required">上传附件：</label>
+							<a class="upload-file" id="j_upload_attach_input">选择文件</a>
+							<span class="upload-tip"><ins>上传的文件不能超过5M！</ins><br><ins>支持txt,xml,pdf,zip,rar,tar,gz,7z,doc,ppt,xls,docx,pptx,xlsx,xlsm格式！</ins></span>
+							<p class="attach-name" id="j_upload_file_container"><span id="j_attach_name"></span></p>	
+							<!-- 上传的文件的id -->
+							<input id="j_attach_id" type="hidden" name="file_id" disabled="disabled" required>
+						</div>
+					</div>
+					<!-- 摘要 -->
+					<div class="form-group abstract-group">
+						<label>摘要：</label>
+						<textarea id="j_abstract_area" type="text/plain" name="abstract" maxlength="128" rows="4" oninput="abstractInput(this)"
+							placeholder="最多可输入128字"></textarea>
+						<span class="word-count" id="j_abstract_count">0/128</span>
+					</div>
+					<!-- 正文 -->
+					<div class="form-group content-group">
+						<label class="required">正文：</label>
+						<div class="editor-wrapper">
+							<!-- 富文本 -->
+							<textarea id="j_u_editor" name="content" type="text/plain" rows="15" required></textarea>
+						</div>
+						<!-- 纯文本 -->
+						<textarea id="j_textarea_plain" name="content" type="text/plain" disabled="disabled" rows="15" required></textarea>
+					</div>
+					<!-- 推送 -->
+					<div class="form-group" id="j_push_official">
+						<label>推送：</label>
+						<input type="checkbox" name="sync" value="1" id="push_to">
+						<label for="push_to">同步到公众号</label>
+					</div>
+					<!-- 提交按钮 -->
+					<div class="btn-group">
+						<button class="btn-theme submit" type="submit">发送</button>
+						<button class="btn-theme-o" type="button" id="j_clocking_btn">定时发送</button>
+					</div>
+				</form>
+			</div>
+			<!-- 右侧预览 -->
+			<div class="preview">
+				<div class="btn"><button class="btn-theme" id="j_weixin_preview">在微信端预览</button></div>
+				<ul class="thumb-list" id="j_thumb_list">
+					<li class="active" data-title="请输入标题...">
+						<p class="title"></p>
+						<div class="img"><img /></div>
+						<div class="handle">
+							<i class="icon icon-down j-move-down" title="下移"></i>
+							<i class="icon icon-up j-move-up" title="上移"></i>
+							<i class="icon icon-del j-del-this" title="删除"></i>
+						</div>
+					</li>
+					<li>
+						<a href="javascript:" class="icon add j-add-item">+</a>
+					</li>
+				</ul>
+			</div>
+		</div>
+	</div>
+	<!-- content /end -->
+</div>
+<script>
+	// 输入摘要
+	function abstractInput(_this) {
+		_this.value = _this.value.substr(0, 128);
+		$('#j_abstract_count').html(_this.value.length + '/128');
+	}
+	// 输入标题
+	function titleInput(_this) {
+		$('#j_title_count').html(_this.value.length + '/32');
+		$('#j_thumb_list').find('li.active').attr('data-title', _this.value || '请输入标题...');
+	}
+</script>
